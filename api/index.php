@@ -2,6 +2,9 @@
 // Memuat semua data dari file data.php
 // __DIR__ akan menunjuk ke direktori /api, jadi kita perlu keluar satu level (../)
 $data = require __DIR__ . '/../data.php';
+
+// Daftar kategori yang tersedia, disesuaikan dengan data.php
+$categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,19 +54,32 @@ $data = require __DIR__ . '/../data.php';
             </section>
 
             <section id="projects" class="projects-section animate-on-scroll">
-                <div class="section-header">
-                    <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
-                    <p><?= htmlspecialchars($data['projects_section']['description']) ?></p>
-                    <a href="<?= htmlspecialchars($data['projects_section']['see_all_url']) ?>" class="btn btn-primary" target="_blank">See All Projects</a>
+                <div class="section-header-portfolio"> <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
+                    <div class="category-filter-buttons">
+                        <?php foreach ($categories as $cat): ?>
+                            <button class="filter-btn <?= $cat === 'All' ? 'active' : '' ?>" data-category="<?= strtolower($cat) ?>"><?= htmlspecialchars($cat) ?></button>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-                <div class="project-grid">
-                    <?php foreach ($data['projects'] as $project): ?>
-                    <article class="project-card">
-                        <img src="<?= htmlspecialchars($project['image_url']) ?>" alt="<?= htmlspecialchars($project['title']) ?>" class="project-img">
-                        <div class="project-content">
-                            <span class="project-category"><?= htmlspecialchars($project['category']) ?></span>
-                            <h3 class="project-title"><?= htmlspecialchars($project['title']) ?></h3>
-                            <a href="<?= htmlspecialchars($project['project_url']) ?>" class="project-link" target="_blank">View Details &rarr;</a>
+                <div class="project-grid-portfolio"> <?php foreach ($data['portfolio_items'] as $item): ?>
+                    <article class="portfolio-card" data-category="<?= htmlspecialchars($item['type']) ?>">
+                        <div class="card-content">
+                            <?php if (!empty($item['image_url']) && !str_contains($item['image_url'], 'placeholder.com/200x400')): // Check if image exists and is not the mobile one ?>
+                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-left">
+                            <?php endif; ?>
+                            
+                            <div class="text-block">
+                                <h3 class="card-title"><?= htmlspecialchars($item['title']) ?></h3>
+                                <p class="card-description"><?= htmlspecialchars($item['description']) ?></p>
+                                <a href="<?= htmlspecialchars($item['item_url']) ?>" class="card-link <?= ($item['link_text'] === 'Link not available') ? 'disabled-link' : '' ?>" target="_blank">
+                                    <?= htmlspecialchars($item['link_text']) ?>
+                                    <?php if ($item['link_text'] !== 'Link not available'): ?>&rarr;<?php endif; ?>
+                                </a>
+                            </div>
+
+                            <?php if (!empty($item['image_url']) && str_contains($item['image_url'], 'placeholder.com/200x400')): // Only display if it's the mobile image ?>
+                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-right-mobile">
+                            <?php endif; ?>
                         </div>
                     </article>
                     <?php endforeach; ?>
