@@ -19,14 +19,14 @@ return [
     // Teks untuk bagian header di seksi Proyek
     'projects_section' => [
         'title' => 'Competitions & Projects',
-        'description' => 'link',
+        'description' => 'desc',
         'see_all_url' => 'link'
     ],
 
     // Daftar Proyek Anda
     'projects' => [
         [
-            'title' => 'KataPintar: Aplikasi Pendukung Penderita Autisme',
+            'title' => 'judul',
             'category' => 'UI/UX Competition',
             'image_url' => 'link',
             'project_url' => 'link'
@@ -48,7 +48,7 @@ return [
     // Teks untuk bagian header di seksi Skills
     'skills_section' => [
         'title' => 'Tools & Skills',
-        'description' => 'Berikut adalah beberapa tools dan keahlian yang saya kuasai dan sering gunakan dalam proyek-proyek saya.'
+        'description' => 'What I'm expert of on my project.'
     ],
 
     // Daftar Skill Anda
@@ -66,9 +66,9 @@ return [
         'phone' => '0812-1976-3208',
         'email' => 'stevensander068@gmail.com',
         'social_links' => [
-            'LinkedIn' => 'link',
-            'Instagram' => 'link',
-            'GitHub' => 'link' // Ganti dengan username GitHub Anda
+            'LinkedIn' => 'www.linkedin.com/in/steven-sander-121b90328',
+            'Instagram' => 'https://www.instagram.com/stvns_sander/',
+            'GitHub' => 'stevensandersie' // Ganti dengan username GitHub Anda
         ]
     ]
 ];
