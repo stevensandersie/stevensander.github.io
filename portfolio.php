@@ -15,7 +15,9 @@
 </head>
 <body>
 
-    <div class="animated-background"></div> <div class="container">
+    <div class="animated-background"></div> 
+
+    <div class="container">
 
         <header class="main-header animate-on-scroll">
             <a href="#" class="logo">[Nama Anda]</a>
