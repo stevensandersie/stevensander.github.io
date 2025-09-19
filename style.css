@@ -1,0 +1,93 @@
+/* Pengaturan Dasar & Dark Mode */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Kontainer Utama untuk membatasi lebar konten */
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Tipografi */
+h1, h2, h3, h4 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5em; /* 40px */
+    margin-bottom: 0.2em;
+}
+
+h2 {
+    font-size: 1.5em; /* 24px */
+    color: #a0a0a0;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.25em; /* 20px */
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #8cb4ff; /* Warna aksen biru muda */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* Gaya Kartu Proyek */
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h4 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.card p {
+    color: #a0a0a0;
+}
+
+/* Seksi Kontak & Tautan Sosial */
+.social-links a {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #777;
+    font-size: 0.9em;
+}
