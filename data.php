@@ -48,7 +48,7 @@ return [
     // Teks untuk bagian header di seksi Skills
     'skills_section' => [
         'title' => 'Tools & Skills',
-        'description' => 'What I'm expert of on my project.'
+        'description' => "What I'm expert of on my project."
     ],
 
     // Daftar Skill Anda
