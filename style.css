@@ -25,12 +25,11 @@ html {
 }
 
 body {
-    background-color: var(--bg-color); /* Ini akan jadi fallback jika animasi tidak jalan */
+    background-color: var(--bg-color); /* Fallback jika animasi tidak jalan */
     color: var(--primary-text-color);
     font-family: var(--font-family);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    /* Penting untuk menempatkan container di atas background */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -38,21 +37,21 @@ body {
 
 /* ===== Animated Background Styles ===== */
 .animated-background {
-    position: fixed; /* Membuatnya tetap di tempat */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Mengirimnya ke belakang konten */
+    z-index: -1;
     background: linear-gradient(
         -45deg,
-        #1a202c, /* Darker base */
-        #2d3748, /* Slightly lighter */
-        #4a5568, /* Even lighter */
-        #1a202c  /* Back to dark */
+        #1a202c,
+        #2d3748,
+        #4a5568,
+        #1a202c
     );
-    background-size: 400% 400%; /* Memperbesar ukuran gradien */
-    animation: gradientAnimation 15s ease infinite; /* Animasi berulang */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 @keyframes gradientAnimation {
@@ -67,14 +66,14 @@ body {
     }
 }
 
-/* ===== Container Styles (di atas background) ===== */
+/* ===== Container Styles ===== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 32px;
-    position: relative; /* Penting agar container berada di atas background */
-    z-index: 1; /* Memastikan container di atas animated-background */
-    flex-grow: 1; /* Memastikan container mengisi ruang yang tersedia */
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
 }
 
 /* ===== 2. HEADER & NAVIGASI ===== */
@@ -110,19 +109,6 @@ section {
     padding: 96px 0;
 }
 
-.grid-2-cols {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 64px;
-    align-items: center;
-}
-
-@media (min-width: 768px) {
-    .grid-2-cols {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 /* Glassmorphism Effect untuk Section */
 .hero-section-centered, .projects-section, .tools-section {
     background: var(--card-color);
@@ -134,7 +120,7 @@ section {
     margin-bottom: 64px;
 }
 
-/* ===== 4. HERO SECTION - UPDATED ===== */
+/* ===== 4. HERO SECTION ===== */
 .hero-section-centered {
     display: flex;
     flex-direction: column;
@@ -158,7 +144,7 @@ section {
 }
 
 .hero-text-box {
-    max-width: 700px; /* Batasi lebar teks agar mudah dibaca */
+    max-width: 700px;
 }
 
 .heading-primary {
@@ -252,10 +238,9 @@ section {
     text-decoration: none;
 }
 
-/* ===== 6. TOOLS SECTION - UPDATED ===== */
+/* ===== 6. TOOLS SECTION ===== */
 .tools-grid-box {
     display: grid;
-    /* Membuat grid responsif: 2 kolom di mobile, 3 di tablet, 6 di desktop */
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 24px;
     max-width: 900px;
