@@ -11,7 +11,12 @@ return [
     'personal_info' => [
         'name' => 'Steven Sander',
         'profile_picture_url' => 'https://cdn.momoi.cc/uploads/2025-09-19_b55b0153a6/2025-09-19_b7f981b454.jpg',
-        'description' => 'Saya adalah mahasiswa Business Information Technology di BINUS',
+        'description' => 'I am an active student in the business Information Technology program at BINUS Universities with a strong interest in 
+                            [Data analysis, Business Analysis, System Analysis, AI, Machine Learning, UI/UX Design, and System Architecture Design]. 
+                            I have a solid understanding of System Architecture Design or Data Analysis and actively 
+                            participate in academic projects on Information Systems. 
+                            I am highly adaptable, eager to learn, and capable of collaborating effectively in a team to achieve 
+                            common goals.',
         'cv_url' => 'linkcv',
         'contact_me_url' => '#contact'
     ],
@@ -66,9 +71,9 @@ return [
         'phone' => '0812-1976-3208',
         'email' => 'stevensander068@gmail.com',
         'social_links' => [
-            'LinkedIn' => 'www.linkedin.com/in/steven-sander-121b90328',
+            'LinkedIn' => 'https://www.linkedin.com/in/steven-sander-121b90328/',
             'Instagram' => 'https://www.instagram.com/stvns_sander/',
-            'GitHub' => 'stevensandersie' // Ganti dengan username GitHub Anda
+            'GitHub' => 'https://github.com/stevensandersie' // Ganti dengan username GitHub Anda
         ]
     ]
 ];
