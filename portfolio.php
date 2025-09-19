@@ -1,9 +1,13 @@
+<?php
+// Memuat semua data dari file data.php ke dalam variabel $data
+$data = require 'data.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Nama Anda] | Portfolio</title>
+    <title><?= htmlspecialchars($data['personal_info']['name']) ?> | Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +24,7 @@
     <div class="container">
 
         <header class="main-header animate-on-scroll">
-            <a href="#" class="logo">[Nama Anda]</a>
+            <a href="#" class="logo"><?= htmlspecialchars($data['personal_info']['name']) ?></a>
             <nav class="main-nav">
                 <a href="#home">Home</a>
                 <a href="#projects">Projects</a>
@@ -31,66 +35,52 @@
         <main>
             <section id="home" class="hero-section-centered animate-on-scroll">
                 <div class="hero-image-box">
-                    <img src="https://support.google.com/mail/answer/35529?hl=id&co=GENIE.Platform%3DAndroid" alt="Foto Profil [Nama Anda]">
+                    <img src="<?= htmlspecialchars($data['personal_info']['profile_picture_url']) ?>" alt="Foto Profil <?= htmlspecialchars($data['personal_info']['name']) ?>">
                 </div>
                 <div class="hero-text-box">
-                    <h1 class="heading-primary">[Nama Anda]</h1>
+                    <h1 class="heading-primary"><?= htmlspecialchars($data['personal_info']['name']) ?></h1>
                     <p class="hero-description">
-                        [Tulis paragraf perkenalan singkat yang kuat tentang diri Anda, passion, dan keahlian utama. Mirip seperti di situs referensi.]
+                        <?= htmlspecialchars($data['personal_info']['description']) ?>
                     </p>
                     <div class="hero-buttons">
-                        <a href="[LINK CV ATS]" class="btn btn-primary" target="_blank">Download CV</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                        <a href="<?= htmlspecialchars($data['personal_info']['cv_url']) ?>" class="btn btn-primary" target="_blank">Download CV</a>
+                        <a href="<?= htmlspecialchars($data['personal_info']['contact_me_url']) ?>" class="btn btn-secondary">Contact Me</a>
                     </div>
                 </div>
             </section>
 
             <section id="projects" class="projects-section animate-on-scroll">
                 <div class="section-header">
-                    <h2 class="heading-secondary">Competitions & Projects</h2>
-                    <p>[Tulis deskripsi singkat tentang pengalaman Anda dalam kompetisi dan proyek, mirip seperti di situs referensi.]</p>
-                    <a href="[LINK KE HALAMAN SEMUA PROYEK]" class="btn btn-primary">See All Projects</a>
+                    <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
+                    <p><?= htmlspecialchars($data['projects_section']['description']) ?></p>
+                    <a href="<?= htmlspecialchars($data['projects_section']['see_all_url']) ?>" class="btn btn-primary" target="_blank">See All Projects</a>
                 </div>
                 <div class="project-grid">
+                    <?php foreach ($data['projects'] as $project): ?>
                     <article class="project-card">
-                        <img src="https://id.scribd.com/document/498699717/GAMBAR-KERJA-RUMAH-1-LANTAI-TYPE-62" alt="[Nama Proyek 1]" class="project-img">
+                        <img src="<?= htmlspecialchars($project['image_url']) ?>" alt="<?= htmlspecialchars($project['title']) ?>" class="project-img">
                         <div class="project-content">
-                            <span class="project-category">[Kategori, misal: UI/UX Competition]</span>
-                            <h3 class="project-title">[Nama Proyek 1]</h3>
-                            <a href="[LINK DETAIL PROYEK 1]" class="project-link" target="_blank">View Details &rarr;</a>
+                            <span class="project-category"><?= htmlspecialchars($project['category']) ?></span>
+                            <h3 class="project-title"><?= htmlspecialchars($project['title']) ?></h3>
+                            <a href="<?= htmlspecialchars($project['project_url']) ?>" class="project-link" target="_blank">View Details &rarr;</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <img src="https://pixabay.com/id/images/search/proyek%20konstruksi/" alt="[Nama Proyek 2]" class="project-img">
-                        <div class="project-content">
-                            <span class="project-category">[Kategori, misal: Course Project]</span>
-                            <h3 class="project-title">[Nama Proyek 2]</h3>
-                            <a href="[LINK DETAIL PROYEK 2]" class="project-link" target="_blank">View Details &rarr;</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <img src="https://id.scribd.com/document/347171482/Gedung-3-lantai" alt="[Nama Proyek 3]" class="project-img">
-                        <div class="project-content">
-                            <span class="project-category">[Kategori, misal: Business Ideation]</span>
-                            <h3 class="project-title">[Nama Proyek 3]</h3>
-                            <a href="[LINK DETAIL PROYEK 3]" class="project-link" target="_blank">View Details &rarr;</a>
-                        </div>
-                    </article>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
             <section id="tools" class="tools-section animate-on-scroll">
                  <div class="section-header">
-                    <h2 class="heading-secondary">Tools & Skills</h2>
-                    <p>[Deskripsi singkat tentang keahlian dan tools yang Anda kuasai.]</p>
+                    <h2 class="heading-secondary"><?= htmlspecialchars($data['skills_section']['title']) ?></h2>
+                    <p><?= htmlspecialchars($data['skills_section']['description']) ?></p>
                 </div>
                 <div class="tools-grid-box">
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"><span>Figma</span></div>
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" alt="Canva"><span>Canva</span></div>
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="Python"><span>Python</span></div>
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" alt="Microsoft Word"><span>Ms. Word</span></div>
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png" alt="Microsoft Excel"><span>Ms. Excel</span></div>
-                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg.png" alt="Microsoft PowerPoint"><span>Ms. PowerPoint</span></div>
+                    <?php foreach ($data['skills'] as $skill): ?>
+                    <div class="tool-item">
+                        <img src="<?= htmlspecialchars($skill['image_url']) ?>" alt="<?= htmlspecialchars($skill['name']) ?>">
+                        <span><?= htmlspecialchars($skill['name']) ?></span>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
         </main>
@@ -99,23 +89,23 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Phone</h4>
-                    <p>[Nomor Telepon Anda]</p>
+                    <p><?= htmlspecialchars($data['contact_info']['phone']) ?></p>
                 </div>
                 <div class="footer-col">
                     <h4>Email</h4>
-                    <a href="mailto:[Email Anda]">[Email Anda]</a>
+                    <a href="mailto:<?= htmlspecialchars($data['contact_info']['email']) ?>"><?= htmlspecialchars($data['contact_info']['email']) ?></a>
                 </div>
                 <div class="footer-col">
                     <h4>Social Media</h4>
                     <div class="social-links">
-                        <a href="[Link LinkedIn]" target="_blank">LinkedIn</a>
-                        <a href="[Link Instagram]" target="_blank">Instagram</a>
-                        <a href="[Link GitHub]" target="_blank">GitHub</a>
+                        <?php foreach ($data['contact_info']['social_links'] as $name => $url): ?>
+                        <a href="<?= htmlspecialchars($url) ?>" target="_blank"><?= htmlspecialchars($name) ?></a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 by [Nama Anda]. All rights reserved.</p>
+                <p>&copy; 2025 by <?= htmlspecialchars($data['personal_info']['name']) ?>. All rights reserved.</p>
             </div>
         </footer>
 
