@@ -1,6 +1,6 @@
 <?php
 // Memuat semua data dari file data.php ke dalam variabel $data
-$data = require 'data.php';
+$data = require '/data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
