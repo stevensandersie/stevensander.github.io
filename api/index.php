@@ -1,5 +1,5 @@
 <?php
-// Memuat semua data dari file data.php ke dalam variabel $data
+// Baris ini sudah benar, jangan diubah
 $data = require __DIR__ . '/../data.php';
 ?>
 <!DOCTYPE html>
@@ -13,11 +13,14 @@ $data = require __DIR__ . '/../data.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/../style.css">
+    <link rel="stylesheet" href="/style.css">
     
-    <script src="/../script.js" defer></script>
+    <script src="/script.js" defer></script>
 </head>
 <body>
+    ...
+</body>
+</html>
 
     <div class="animated-background"></div> 
 
