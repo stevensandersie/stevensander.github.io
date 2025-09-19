@@ -11,7 +11,11 @@ return [
     'personal_info' => [
         'name' => 'Steven Sander',
         'profile_picture_url' => 'https://cdn.momoi.cc/uploads/2025-09-19_b55b0153a6/2025-09-19_b7f981b454.jpg',
-        'description' => 'Saya adalah mahasiswa Business Information Technology di BINUS dengan passion kuat di bidang UI/UX design, business analysis, dan project management. Saya aktif dalam berbagai organisasi dan kompetisi untuk terus mengembangkan skill dan kontribusi pada proyek yang berdampak.',
+        'description' => 'I am an active student in the business Information Technology program at BINUS Universities
+                         with a strong interest in [Data analysis, Business Analysis, System Analysis, AI, Machine Learning, 
+                         UI/UX Design, and System Architecture Design]. I have a solid understanding of System Architecture Design 
+                         or Data Analysis and actively participate in academic projects on Information Systems. I am highly adaptable, 
+                         eager to learn, and capable of collaborating effectively in a team to achieve common goals.',
         'cv_url' => 'https://docs.google.com/document/d/1example/edit?usp=sharing', // Ganti dengan link CV Anda
         'contact_me_url' => '#contact'
     ],
@@ -19,7 +23,7 @@ return [
     // Teks untuk bagian header di seksi Proyek
     'projects_section' => [
         'title' => 'Portfolio', // Diubah menjadi 'Portfolio'
-        'description' => 'Lihatlah berbagai proyek, pendidikan, sertifikat, dan aktivitas yang telah saya lakukan.', // Deskripsi umum
+        'description' => 'Explore my projects, education, certifications, and activities.', // Deskripsi umum
         'see_all_url' => '#' // Link ini mungkin tidak lagi relevan dengan adanya filter
     ],
 
@@ -29,7 +33,7 @@ return [
             'title' => 'Management KingsHCut',
             'type' => 'project', // Kategori baru
             'description' => 'Aplikasi web berbasis java dan MySQL untuk mengelola stok, penjualan, dan laporan keuangan barbershop.',
-            'image_url' => 'https://via.placeholder.com/300x200.png?text=KingsHCut', // Placeholder image
+            'image_url' => '', // Placeholder image
             'link_text' => 'Link not available',
             'item_url' => '#' // Jika ada link ke detail proyek
         ],
@@ -37,41 +41,25 @@ return [
             'title' => 'Aplikasi Sewa Alat Berat',
             'type' => 'project',
             'description' => 'Membuat aplikasi sederhana untuk manajemen penyewaan alat berat yang efisien dan terintegrasi.',
-            'image_url' => 'https://via.placeholder.com/200x400.png?text=Mobile+App', // Placeholder image
+            'image_url' => '', // Placeholder image
             'link_text' => 'View Details',
             'item_url' => '#'
         ],
         [
-            'title' => 'SMAK Penabur Harapan Indah',
+            'title' => 'Unity Senior High School',
             'type' => 'education', // Kategori baru
-            'description' => 'Lulus dari jurusan IPS di SMAK Penabur Harapan Indah.',
-            'image_url' => 'https://via.placeholder.com/300x200.png?text=School+Building', // Placeholder image
+            'description' => 'Graduated with the 7th highest diploma score',
+            'image_url' => '', // Placeholder image
             'link_text' => 'Link not available',
             'item_url' => '#'
         ],
         // Tambahkan item lain di sini sesuai kebutuhan
-        [
-            'title' => 'UI/UX Design Course',
-            'type' => 'certificate',
-            'description' => 'Sertifikasi dalam dasar-dasar desain UI/UX dari platform online terkemuka.',
-            'image_url' => 'https://via.placeholder.com/300x200.png?text=Certificate',
-            'link_text' => 'View Certificate',
-            'item_url' => '#'
-        ],
-        [
-            'title' => 'Volunteer at Tech Charity',
-            'type' => 'activity',
-            'description' => 'Berpartisipasi dalam program pengabdian masyarakat untuk memperkenalkan teknologi kepada anak-anak.',
-            'image_url' => 'https://via.placeholder.com/300x200.png?text=Volunteer',
-            'link_text' => 'Learn More',
-            'item_url' => '#'
-        ],
     ],
     
     // Teks untuk bagian header di seksi Skills
     'skills_section' => [
         'title' => 'Tools & Skills',
-        'description' => 'Berikut adalah beberapa tools dan keahlian yang saya kuasai dan sering gunakan dalam proyek-proyek saya.'
+        'description' => 'These are the tools and skills that I great at and often use for my projects.'
     ],
 
     // Daftar Skill Anda
@@ -89,9 +77,9 @@ return [
         'phone' => '0812-3456-7890', // Ganti dengan nomor telepon Anda
         'email' => 'steven.sander@example.com', // Ganti dengan email Anda
         'social_links' => [
-            'LinkedIn' => 'https://linkedin.com/in/yourprofile', // Ganti dengan link LinkedIn Anda
-            'Instagram' => 'https://instagram.com/yourprofile', // Ganti dengan link Instagram Anda
-            'GitHub' => 'https://github.com/yourusername' // Ganti dengan link GitHub Anda
+            'LinkedIn' => 'https://www.linkedin.com/in/steven-sander-121b90328/', // Ganti dengan link LinkedIn Anda
+            'Instagram' => 'https://instagram.com/stvns_sander', // Ganti dengan link Instagram Anda
+            'GitHub' => 'https://github.com/stevensandersie' // Ganti dengan link GitHub Anda
         ]
     ]
 ];
