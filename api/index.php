@@ -1,5 +1,6 @@
 <?php
-// Memuat semua data dari file data.php ke dalam variabel $data
+// Memuat semua data dari file data.php
+// __DIR__ akan menunjuk ke direktori /api, jadi kita perlu keluar satu level (../)
 $data = require __DIR__ . '/../data.php';
 ?>
 <!DOCTYPE html>
@@ -44,7 +45,7 @@ $data = require __DIR__ . '/../data.php';
                     </p>
                     <div class="hero-buttons">
                         <a href="<?= htmlspecialchars($data['personal_info']['cv_url']) ?>" class="btn btn-primary" target="_blank">Download CV</a>
-                        <a href="<?= htmlspecialchars($data['personal_info']['contact_me_url']) ?>" class="btn btn-secondary">Contact Me</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
                     </div>
                 </div>
             </section>
@@ -70,7 +71,7 @@ $data = require __DIR__ . '/../data.php';
             </section>
 
             <section id="tools" class="tools-section animate-on-scroll">
-                 <div class="section-header">
+               <div class="section-header">
                     <h2 class="heading-secondary"><?= htmlspecialchars($data['skills_section']['title']) ?></h2>
                     <p><?= htmlspecialchars($data['skills_section']['description']) ?></p>
                 </div>

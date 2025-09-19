@@ -281,6 +281,14 @@ section {
     margin-bottom: 16px;
 }
 .social-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-col a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-col a:hover {
+    color: var(--accent-color);
+}
 .copyright { text-align: center; color: var(--secondary-text-color); }
 
 
