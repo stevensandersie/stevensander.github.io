@@ -1,9 +1,13 @@
 <?php
 
-// FILE INI UNTUK MENGEDIT SEMUA INFORMASI PORTOFOLIO ANDA
-// Cukup ubah teks di antara tanda kutip (') di bawah ini.
+// ===================================================================
+// == FILE PUSAT DATA PORTOFOLIO ==
+// Ubah semua informasi Anda di file ini.
+// Cukup ganti teks di antara tanda kutip (' ').
+// ===================================================================
 
 return [
+    // Informasi Pribadi untuk bagian Hero
     'personal_info' => [
         'name' => 'Maria Firsty Anggarine',
         'profile_picture_url' => 'https://static.wixstatic.com/media/1be581_3fc0873fdefd464ab2c6f199e9d21cab~mv2.jpg/v1/crop/x_64,y_0,w_1124,h_1359/fill/w_180,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/WhatsApp%20Image%202024-10-12%20at%2011_edited_j.jpg',
@@ -12,12 +16,15 @@ return [
         'contact_me_url' => '#contact'
     ],
 
+    // Teks untuk bagian header di seksi Proyek
     'projects_section' => [
         'title' => 'Competitions & Projects',
         'description' => 'Selama masa kuliah, saya telah berpartisipasi dalam berbagai kompetisi dan proyek yang berfokus pada UI/UX, analisis sistem, dan ide bisnis untuk mengaplikasikan ilmu secara praktis.',
-        'see_all_url' => 'https://firsstty.wixsite.com/firstyportofolio/blog' // Ganti dengan link halaman semua proyek Anda
+        'see_all_url' => 'https://firsstty.wixsite.com/firstyportofolio/blog'
     ],
 
+    // Daftar Proyek Anda
+    // Untuk menambah proyek, cukup salin blok dari '[' sampai '],' dan letakkan di bawahnya.
     'projects' => [
         [
             'title' => 'KataPintar: Aplikasi Pendukung Penderita Autisme',
@@ -39,11 +46,13 @@ return [
         ]
     ],
     
+    // Teks untuk bagian header di seksi Skills
     'skills_section' => [
         'title' => 'Tools & Skills',
         'description' => 'Berikut adalah beberapa tools dan keahlian yang saya kuasai dan sering gunakan dalam proyek-proyek saya.'
     ],
 
+    // Daftar Skill Anda
     'skills' => [
         ['name' => 'Figma', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'],
         ['name' => 'Canva', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg'],
@@ -53,6 +62,7 @@ return [
         ['name' => 'Ms. PowerPoint', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg.png']
     ],
 
+    // Informasi Kontak di Footer
     'contact_info' => [
         'phone' => '0856-0751-5016',
         'email' => 'firsstty@gmail.com',
