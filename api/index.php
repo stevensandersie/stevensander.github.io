@@ -23,9 +23,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
 </head>
 <body>
 
-    <div class="animated-background"></div> 
-
-    <div class="container">
+    <canvas id="network-background"></canvas> <div class="animated-background"></div> <div class="container">
 
         <header class="main-header animate-on-scroll">
             <a href="#" class="logo"><?= htmlspecialchars($data['personal_info']['name']) ?></a>
@@ -37,7 +35,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
         </header>
 
         <main>
-            <section id="home" class="hero-section-centered animate-on-scroll">
+            <section id="home" class="hero-section-no-box animate-on-scroll">
                 <div class="hero-image-box">
                     <img src="<?= htmlspecialchars($data['personal_info']['profile_picture_url']) ?>" alt="Foto Profil <?= htmlspecialchars($data['personal_info']['name']) ?>">
                 </div>
@@ -52,19 +50,20 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                     </div>
                 </div>
             </section>
-
             <section id="projects" class="projects-section animate-on-scroll">
-                <div class="section-header-portfolio"> <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
+                <div class="section-header-portfolio">
+                    <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
                     <div class="category-filter-buttons">
                         <?php foreach ($categories as $cat): ?>
                             <button class="filter-btn <?= $cat === 'All' ? 'active' : '' ?>" data-category="<?= strtolower($cat) ?>"><?= htmlspecialchars($cat) ?></button>
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <div class="project-grid-portfolio"> <?php foreach ($data['portfolio_items'] as $item): ?>
+                <div class="project-grid-portfolio">
+                    <?php foreach ($data['portfolio_items'] as $item): ?>
                     <article class="portfolio-card" data-category="<?= htmlspecialchars($item['type']) ?>">
                         <div class="card-content">
-                            <?php if (!empty($item['image_url']) && !str_contains($item['image_url'], 'placeholder.com/200x400')): // Check if image exists and is not the mobile one ?>
+                            <?php if (!empty($item['image_url']) && !str_contains($item['image_url'], 'placeholder.com/200x400')): ?>
                                 <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-left">
                             <?php endif; ?>
                             
@@ -77,7 +76,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                                 </a>
                             </div>
 
-                            <?php if (!empty($item['image_url']) && str_contains($item['image_url'], 'placeholder.com/200x400')): // Only display if it's the mobile image ?>
+                            <?php if (!empty($item['image_url']) && str_contains($item['image_url'], 'placeholder.com/200x400')): ?>
                                 <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-right-mobile">
                             <?php endif; ?>
                         </div>
