@@ -11,7 +11,7 @@ return [
     'personal_info' => [
         'name' => 'Steven Sander',
         'profile_picture_url' => 'https://cdn.momoi.cc/uploads/2025-09-19_b55b0153a6/2025-09-19_b7f981b454.jpg',
-        'description' => 'I am an active student in the business Information Technology program at BINUS Universities
+        'description' => 'I am an active student in the Business Information Technology program at BINUS Universities
                          with a strong interest in [Data analysis, Business Analysis, System Analysis, AI, Machine Learning, 
                          UI/UX Design, and System Architecture Design]. I have a solid understanding of System Architecture Design 
                          or Data Analysis and actively participate in academic projects on Information Systems. I am highly adaptable, 
@@ -65,11 +65,11 @@ return [
     // Daftar Skill Anda
     'skills' => [
         ['name' => 'Figma', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'],
-        ['name' => 'Canva', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg'],
-        ['name' => 'Python', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png'],
+        ['name' => 'Canva', 'image_url' => 'https://img.icons8.com/?size=100&id=iWw83PVcBpLw&format=png&color=000000'],
+        ['name' => 'Visual Paradigm', 'image_url' => ''],
         ['name' => 'Ms. Word', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png'],
-        ['name' => 'Ms. Excel', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png'],
-        ['name' => 'Ms. PowerPoint', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg.png']
+        ['name' => 'MySql', 'image_url' => ''],
+        ['name' => 'Eclipse', 'image_url' => '']
     ],
 
     // Informasi Kontak di Footer
