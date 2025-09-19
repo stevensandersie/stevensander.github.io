@@ -1,6 +1,6 @@
 <?php
 // Memuat semua data dari file data.php ke dalam variabel $data
-require __DIR__ . '/../data.php';
+$data = require __DIR__ . '/../data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
