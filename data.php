@@ -63,8 +63,8 @@ return [
 
     // Informasi Kontak di Footer
     'contact_info' => [
-        'phone' => '0856-0751-5016',
-        'email' => 'firsstty@gmail.com',
+        'phone' => '0812-1976-3208',
+        'email' => 'stevensander068@gmail.com',
         'social_links' => [
             'LinkedIn' => 'link',
             'Instagram' => 'link',
