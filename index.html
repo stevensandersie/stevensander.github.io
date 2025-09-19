@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Nama Anda] | Professional Portfolio</title>
+    <title>[Nama Anda] | Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,73 +17,103 @@
 
     <div class="container">
 
-        <header class="hero">
-            <h1 class="hero-title">Hi, I'm [Nama Anda]</h1>
-            <h2 class="hero-subtitle">[Jabatan/Deskripsi Anda, misal: Future-Focused Web Developer]</h2>
-            <p class="hero-description">
-                [Tulis 2-3 kalimat ringkas yang powerful tentang diri Anda. Fokus pada value yang bisa Anda berikan.]
-            </p>
+        <header class="main-header animate-on-scroll">
+            <a href="#" class="logo">[Nama Anda]</a>
+            <nav class="main-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+            </nav>
         </header>
 
         <main>
-            <section class="projects-section">
-                <h3 class="section-title">Featured Projects</h3>
-                
-                <article class="project-card animate-on-scroll">
-                    <h4>[Judul Proyek Pertama Anda]</h4>
-                    <p>[Deskripsi singkat yang menjelaskan tantangan atau hasil dari proyek ini.]</p>
-                    <div class="project-tags">
-                        <span>[Teknologi 1]</span>
-                        <span>[Teknologi 2]</span>
+            <section id="home" class="hero-section grid-2-cols animate-on-scroll">
+                <div class="hero-image-box">
+                    <img src="https://support.google.com/mail/answer/35529?hl=en&co=GENIE.Platform%3DAndroid" alt="Foto Profil [Nama Anda]">
+                </div>
+                <div class="hero-text-box">
+                    <h1 class="heading-primary">[Nama Anda]</h1>
+                    <p class="hero-description">
+                        [Tulis paragraf perkenalan singkat yang kuat tentang diri Anda, passion, dan keahlian utama. Mirip seperti di situs referensi.]
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="[LINK CV ATS]" class="btn btn-primary" target="_blank">Download CV</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
                     </div>
-                    <a href="[Link ke Proyek]" class="project-link" target="_blank">
-                        View Project <span>&rarr;</span>
-                    </a>
-                </article>
-
-                <article class="project-card animate-on-scroll">
-                    <h4>[Judul Proyek Kedua Anda]</h4>
-                    <p>[Deskripsi singkat yang menjelaskan tantangan atau hasil dari proyek ini.]</p>
-                    <div class="project-tags">
-                        <span>[Teknologi 1]</span>
-                        <span>[Teknologi 2]</span>
-                    </div>
-                    <a href="[Link ke Proyek]" class="project-link" target="_blank">
-                        View Project <span>&rarr;</span>
-                    </a>
-                </article>
-                
-                <article class="project-card animate-on-scroll">
-                    <h4>[Judul Proyek Ketiga Anda]</h4>
-                    <p>[Deskripsi singkat yang menjelaskan tantangan atau hasil dari proyek ini.]</p>
-                    <div class="project-tags">
-                        <span>[Teknologi 1]</span>
-                        <span>[Teknologi 2]</span>
-                    </div>
-                    <a href="[Link ke Proyek]" class="project-link" target="_blank">
-                        View Project <span>&rarr;</span>
-                    </a>
-                </article>
-
+                </div>
             </section>
 
-            <section class="contact-section">
-                <h3 class="section-title">Get in Touch</h3>
-                <p>I'm currently open to new opportunities. Let's build something great together.</p>
-                <a href="mailto:[emailanda@gmail.com]" class="cta-button">Say Hello</a>
-                <div class="social-links">
-                    <a href="[Link LinkedIn Anda]" target="_blank">LinkedIn</a>
-                    <a href="[Link GitHub Anda]" target="_blank">GitHub</a>
-                    <a href="[Link Instagram/lainnya]" target="_blank">Instagram</a>
+            <section id="projects" class="projects-section animate-on-scroll">
+                <div class="section-header">
+                    <h2 class="heading-secondary">Competitions & Projects</h2>
+                    <p>[Tulis deskripsi singkat tentang pengalaman Anda dalam kompetisi dan proyek, mirip seperti di situs referensi.]</p>
+                    <a href="[LINK KE HALAMAN SEMUA PROYEK]" class="btn btn-primary">See All Projects</a>
                 </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <img src="https://id.scribd.com/document/498699717/GAMBAR-KERJA-RUMAH-1-LANTAI-TYPE-62" alt="[Nama Proyek 1]" class="project-img">
+                        <div class="project-content">
+                            <span class="project-category">[Kategori, misal: UI/UX Competition]</span>
+                            <h3 class="project-title">[Nama Proyek 1]</h3>
+                            <a href="[LINK DETAIL PROYEK 1]" class="project-link" target="_blank">View Details &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img src="https://pixabay.com/id/images/search/proyek%20konstruksi/" alt="[Nama Proyek 2]" class="project-img">
+                        <div class="project-content">
+                            <span class="project-category">[Kategori, misal: Course Project]</span>
+                            <h3 class="project-title">[Nama Proyek 2]</h3>
+                            <a href="[LINK DETAIL PROYEK 2]" class="project-link" target="_blank">View Details &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img src="https://id.scribd.com/document/347171482/Gedung-3-lantai" alt="[Nama Proyek 3]" class="project-img">
+                        <div class="project-content">
+                            <span class="project-category">[Kategori, misal: Business Ideation]</span>
+                            <h3 class="project-title">[Nama Proyek 3]</h3>
+                            <a href="[LINK DETAIL PROYEK 3]" class="project-link" target="_blank">View Details &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="tools" class="tools-section grid-2-cols animate-on-scroll">
+                 <div class="tools-text-box">
+                    <h2 class="heading-secondary">Tools & Skills</h2>
+                    <p>[Deskripsi singkat tentang keahlian dan tools yang Anda kuasai.]</p>
+                </div>
+                <div class="tools-grid-box">
+                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"><span>Figma</span></div>
+                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" alt="Canva"><span>Canva</span></div>
+                    <div class="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="Python"><span>Python</span></div>
+                     </div>
             </section>
         </main>
 
-        <footer>
-            <p>&copy; 2025 [Nama Anda]. Crafted with passion.</p>
+        <footer id="contact" class="main-footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Phone</h4>
+                    <p>[Nomor Telepon Anda]</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Email</h4>
+                    <a href="mailto:[Email Anda]">[Email Anda]</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="social-links">
+                        <a href="[Link LinkedIn]" target="_blank">LinkedIn</a>
+                        <a href="[Link Instagram]" target="_blank">Instagram</a>
+                        <a href="[Link GitHub]" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 by [Nama Anda]. All rights reserved.</p>
+            </div>
         </footer>
 
     </div>
-
 </body>
 </html>

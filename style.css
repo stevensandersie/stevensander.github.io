@@ -1,8 +1,8 @@
 /* ===== 1. PENGATURAN TEMA & DASAR ===== */
 :root {
-    /* Warna */
+    /* Palet Warna Gelap */
     --bg-color: #0d1117;
-    --card-color: rgba(255, 255, 255, 0.05);
+    --card-color: rgba(33, 41, 54, 0.5);
     --border-color: rgba(255, 255, 255, 0.1);
     --primary-text-color: #c9d1d9;
     --secondary-text-color: #8b949e;
@@ -10,11 +10,7 @@
     --accent-hover-color: #1f6feb;
 
     /* Tipografi */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    
-    /* Efek */
-    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --card-border-radius: 12px;
+    --font-family: 'Inter', sans-serif;
 }
 
 /* Reset & Gaya Global */
@@ -34,152 +30,244 @@ body {
     font-family: var(--font-family);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 32px;
 }
 
-/* ===== 2. TIPOGRAFI & JUDUL ===== */
-h1, h2, h3, h4 {
-    color: #ffffff;
+/* ===== 2. HEADER & NAVIGASI ===== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    margin-bottom: 64px;
+}
+
+.logo {
+    font-size: 20px;
     font-weight: 700;
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran font responsif */
-    font-weight: 900;
-    margin-bottom: 0.2em;
-}
-
-.hero-subtitle {
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
-    color: var(--accent-color);
-    margin-bottom: 1em;
-}
-
-.section-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-p {
-    color: var(--secondary-text-color);
-    margin-bottom: 1rem;
-}
-
-a {
-    color: var(--accent-color);
+    color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-a:hover {
-    color: var(--accent-hover-color);
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    margin-left: 24px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
 }
 
 
 /* ===== 3. LAYOUT & SEKSI ===== */
-.hero, .projects-section, .contact-section {
-    padding: 80px 0;
+section {
+    padding: 96px 0;
 }
 
-/* ===== 4. KARTU PROYEK (GLASSMORPHISM & INTERAKTIF) ===== */
-.project-card {
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+/* Aturan untuk Desktop */
+@media (min-width: 768px) {
+    .grid-2-cols {
+        grid-template-columns: 1fr 1fr;
+    }
+    .hero-section {
+        grid-template-columns: 40% 1fr;
+    }
+    .tools-section {
+        grid-template-columns: 1fr 40%;
+    }
+}
+
+/* Glassmorphism Effect untuk Section */
+.hero-section, .projects-section, .tools-section {
     background: var(--card-color);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: var(--card-border-radius);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    padding: 48px;
+    margin-bottom: 64px;
 }
 
+/* ===== 4. HERO SECTION ===== */
+.hero-image-box img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.heading-primary {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.hero-description {
+    margin-bottom: 32px;
+    color: var(--secondary-text-color);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+/* ===== 5. PROJECTS SECTION ===== */
+.section-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.heading-secondary {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    max-width: 600px;
+    margin: 0 auto 32px auto;
+    color: var(--secondary-text-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.project-card {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--card-shadow);
-    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.project-card h4 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+.project-img {
+    width: 100%;
+    display: block;
 }
 
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
+.project-content {
+    padding: 24px;
 }
 
-.project-tags span {
+.project-category {
+    display: inline-block;
     background-color: rgba(88, 166, 255, 0.1);
     color: var(--accent-color);
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
+    font-size: 12px;
+    padding: 4px 12px;
     border-radius: 99px;
+    margin-bottom: 12px;
+}
+
+.project-title {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 16px;
 }
 
 .project-link {
-    display: inline-block;
     font-weight: 700;
-    margin-top: 1rem;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
-.project-link span {
-    display: inline-block;
-    transition: transform 0.3s ease;
+/* ===== 6. TOOLS SECTION ===== */
+.tools-grid-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
-
-.project-link:hover span {
-    transform: translateX(5px);
-}
-
-/* ===== 5. KONTAK & FOOTER ===== */
-.contact-section {
+.tool-item {
+    background-color: rgba(0,0,0,0.2);
+    padding: 24px;
+    border-radius: 8px;
     text-align: center;
 }
+.tool-item img {
+    height: 48px;
+    margin-bottom: 12px;
+}
 
-.cta-button {
+/* ===== 7. FOOTER ===== */
+.main-footer {
+    padding: 64px 0;
+    border-top: 1px solid var(--border-color);
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+}
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.footer-col h4 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.social-links { display: flex; flex-direction: column; gap: 8px; }
+.copyright { text-align: center; color: var(--secondary-text-color); }
+
+
+/* ===== 8. UTILITIES (Buttons, Animations) ===== */
+.btn {
     display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.btn-primary {
     background-color: var(--accent-color);
     color: var(--bg-color);
-    font-weight: 700;
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.cta-button:hover {
+.btn-primary:hover {
     background-color: var(--accent-hover-color);
-    transform: scale(1.05);
+    transform: translateY(-2px);
 }
 
-.social-links {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    box-shadow: inset 0 0 0 1px var(--border-color);
+}
+.btn-secondary:hover {
+    background-color: var(--card-color);
+    transform: translateY(-2px);
 }
 
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    color: var(--secondary-text-color);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 40px;
-}
-
-/* ===== 6. ANIMASI ON-SCROLL ===== */
+/* Animasi On-Scroll */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -189,16 +277,4 @@ footer {
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* ===== 7. RESPONSIVE (DESKTOP) ===== */
-@media (min-width: 768px) {
-    .projects-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-    .project-card {
-        margin-bottom: 0;
-    }
 }
