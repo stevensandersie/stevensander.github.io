@@ -1,5 +1,5 @@
 <?php
-// Baris ini sudah benar, jangan diubah
+// Memuat semua data dari file data.php ke dalam variabel $data
 $data = require __DIR__ . '/../data.php';
 ?>
 <!DOCTYPE html>
@@ -18,9 +18,6 @@ $data = require __DIR__ . '/../data.php';
     <script src="/script.js" defer></script>
 </head>
 <body>
-    ...
-</body>
-</html>
 
     <div class="animated-background"></div> 
 

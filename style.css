@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    background-color: var(--bg-color); /* Fallback jika animasi tidak jalan */
+    background-color: var(--bg-color);
     color: var(--primary-text-color);
     font-family: var(--font-family);
     line-height: 1.7;
@@ -55,15 +55,9 @@ body {
 }
 
 @keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* ===== Container Styles ===== */
@@ -109,7 +103,6 @@ section {
     padding: 96px 0;
 }
 
-/* Glassmorphism Effect untuk Section */
 .hero-section-centered, .projects-section, .tools-section {
     background: var(--card-color);
     backdrop-filter: blur(12px);

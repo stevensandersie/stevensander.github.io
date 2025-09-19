@@ -24,7 +24,6 @@ return [
     ],
 
     // Daftar Proyek Anda
-    // Untuk menambah proyek, cukup salin blok dari '[' sampai '],' dan letakkan di bawahnya.
     'projects' => [
         [
             'title' => 'KataPintar: Aplikasi Pendukung Penderita Autisme',
