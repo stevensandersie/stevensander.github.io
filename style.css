@@ -1,7 +1,7 @@
 /* ===== 1. PENGATURAN TEMA & DASAR ===== */
 :root {
     /* Palet Warna Gelap */
-    --bg-color: #0d1117;
+    --bg-color: #000000; /* Diubah ke hitam pekat */
     --card-color: rgba(33, 41, 54, 0.5);
     --border-color: rgba(255, 255, 255, 0.1);
     --primary-text-color: #c9d1d9;
@@ -45,10 +45,10 @@ body {
     z-index: -1;
     background: linear-gradient(
         -45deg,
-        #1a202c,
-        #2d3748,
-        #4a5568,
-        #1a202c
+        #000000, /* Hitam Pekat */
+        #111111, /* Abu-abu sangat gelap */
+        #0a0a0a, /* Sedikit variasi */
+        #000000  /* Kembali ke Hitam Pekat */
     );
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
