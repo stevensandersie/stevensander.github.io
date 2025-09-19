@@ -96,124 +96,34 @@ body {
     color: #fff;
     text-decoration: none;
     transition: transform 0.3s ease;
-    z-index: 1001; /* Pastikan logo di atas menu mobile */
 }
-/* ... (logo hover style, tidak ada perubahan) ... */
+.logo:hover {
+    transform: scale(1.05);
+}
 
-/* ===== NAVIGASI DESKTOP (Default untuk layar besar) ===== */
-.main-nav {
-    display: flex;
-    gap: 24px; /* Memberi jarak antar link */
-}
 .main-nav a {
-    /* ... (gaya link navigasi Anda yang sudah ada) ... */
-}
-
-
-/* ===== NAVIGASI MOBILE & HAMBURGER (Baru & Dimodifikasi) ===== */
-.nav-toggle {
-    display: none; /* Sembunyikan di desktop */
-    z-index: 1001; /* Pastikan tombol di atas menu */
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    padding: 0.5em;
-}
-
-.hamburger {
-    display: block;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    margin-left: 24px;
+    transition: color 0.3s;
     position: relative;
-    width: 2em;
-    height: 3px;
-    background: var(--primary-text-color);
-    border-radius: 3px;
-    transition: transform 0.3s ease;
+    padding-bottom: 4px;
 }
-.hamburger::before,
-.hamburger::after {
+.main-nav a::after {
     content: '';
     position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
     left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-out;
+}
+.main-nav a:hover {
+    color: var(--accent-color);
+}
+.main-nav a:hover::after {
     width: 100%;
-    height: 3px;
-    background: var(--primary-text-color);
-    border-radius: 3px;
-    transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
-}
-.hamburger::before { top: -8px; }
-.hamburger::after { top: 8px; }
-
-/* Animasi tombol menjadi X saat menu terbuka */
-.nav-toggle.is-open .hamburger {
-    transform: rotate(45deg);
-}
-.nav-toggle.is-open .hamburger::before {
-    top: 0;
-    transform: rotate(90deg);
-}
-.nav-toggle.is-open .hamburger::after {
-    opacity: 0; /* Sembunyikan garis tengah */
-}
-
-
-/* ===== MEDIA QUERY UNTUK RESPONSIVE (Penting) ===== */
-@media (max-width: 767px) {
-    /* Tampilkan tombol hamburger di mobile */
-    .nav-toggle {
-        display: block;
-    }
-
-    /* Atur menu navigasi untuk mobile */
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 70%; /* Lebar menu mobile */
-        max-width: 300px;
-        background: rgba(13, 18, 24, 0.95); /* Background semi-transparan */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-
-        /* Sembunyikan menu di luar layar secara default */
-        transform: translateX(100%);
-        transition: transform 0.3s ease-out;
-
-        /* Ubah layout menjadi vertikal */
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 48px;
-    }
-
-    /* Tampilkan menu saat class 'is-visible' ditambahkan oleh JS */
-    .main-nav.is-visible {
-        transform: translateX(0);
-    }
-    
-    .main-nav a {
-        font-size: 1.25rem; /* Perbesar font di menu mobile */
-        margin-left: 0; /* Hapus margin kiri */
-    }
-
-    /* Penyesuaian lain untuk mobile */
-    .container {
-        padding: 0 16px; /* Kurangi padding di mobile */
-    }
-
-    .hero-image-box {
-        width: 150px; /* Kecilkan foto profil */
-        height: 150px;
-    }
-
-    .heading-primary {
-        font-size: clamp(2rem, 10vw, 2.5rem); /* Sesuaikan ukuran font hero */
-    }
-
-    /* Pastikan grid portfolio menjadi 1 kolom */
-    .project-grid-portfolio {
-        grid-template-columns: 1fr;
-    }
 }
 
 
