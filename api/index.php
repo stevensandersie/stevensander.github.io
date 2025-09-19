@@ -1,8 +1,9 @@
 <?php
 // Memuat semua data dari file data.php
+// __DIR__ akan menunjuk ke direktori /api, jadi kita perlu keluar satu level (../)
 $data = require __DIR__ . '/../data.php';
 
-// Daftar kategori yang tersedia
+// Daftar kategori yang tersedia, disesuaikan dengan data.php
 $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
 ?>
 <!DOCTYPE html>
@@ -22,10 +23,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
 </head>
 <body>
 
-    <canvas id="network-background"></canvas>
-    <div class="animated-background"></div>
-
-    <div class="container">
+    <canvas id="network-background"></canvas> <div class="animated-background"></div> <div class="container">
 
         <header class="main-header animate-on-scroll">
             <a href="#" class="logo"><?= htmlspecialchars($data['personal_info']['name']) ?></a>
@@ -33,16 +31,10 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                 <a href="#home">Home</a>
                 <a href="#projects">Projects</a>
                 <a href="#tools">Skills</a>
-                <a href="#contact">Contact</a>
             </nav>
-            
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-                <span class="hamburger-icon"></span>
-            </button>
         </header>
 
         <main>
-            
             <section id="home" class="hero-section-no-box animate-on-scroll">
                 <div class="hero-image-box">
                     <img src="<?= htmlspecialchars($data['personal_info']['profile_picture_url']) ?>" alt="Foto Profil <?= htmlspecialchars($data['personal_info']['name']) ?>">
@@ -58,7 +50,6 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                     </div>
                 </div>
             </section>
-            
             <section id="projects" class="projects-section animate-on-scroll">
                 <div class="section-header-portfolio">
                     <h2 class="heading-secondary"><?= htmlspecialchars($data['projects_section']['title']) ?></h2>
@@ -72,7 +63,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                     <?php foreach ($data['portfolio_items'] as $item): ?>
                     <article class="portfolio-card" data-category="<?= htmlspecialchars($item['type']) ?>">
                         <div class="card-content">
-                            <?php if (!empty($item['image_url'])): ?>
+                            <?php if (!empty($item['image_url']) && !str_contains($item['image_url'], 'placeholder.com/200x400')): ?>
                                 <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-left">
                             <?php endif; ?>
                             
@@ -84,6 +75,10 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                                     <?php if ($item['link_text'] !== 'Link not available'): ?>&rarr;<?php endif; ?>
                                 </a>
                             </div>
+
+                            <?php if (!empty($item['image_url']) && str_contains($item['image_url'], 'placeholder.com/200x400')): ?>
+                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-right-mobile">
+                            <?php endif; ?>
                         </div>
                     </article>
                     <?php endforeach; ?>
@@ -98,9 +93,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                 <div class="tools-grid-box">
                     <?php foreach ($data['skills'] as $skill): ?>
                     <div class="tool-item">
-                        <?php if (!empty($skill['image_url'])): ?>
-                           <img src="<?= htmlspecialchars($skill['image_url']) ?>" alt="<?= htmlspecialchars($skill['name']) ?>">
-                        <?php endif; ?>
+                        <img src="<?= htmlspecialchars($skill['image_url']) ?>" alt="<?= htmlspecialchars($skill['name']) ?>">
                         <span><?= htmlspecialchars($skill['name']) ?></span>
                     </div>
                     <?php endforeach; ?>

@@ -1,16 +1,19 @@
 /* ===== 1. PENGATURAN TEMA & DASAR ===== */
 :root {
-    --bg-color: #0d1218;
-    --card-bg-dark: rgba(22, 27, 34, 0.7);
-    --card-bg-light: rgba(22, 27, 34, 0.9);
-    --border-color: rgba(66, 88, 102, 0.2);
-    --primary-text-color: #e0e6eb;
-    --secondary-text-color: #a0aec0;
-    --accent-color: #4dc0c5;
-    --accent-hover-color: #3182ce;
-    --accent-glow: rgba(77, 192, 197, 0.3);
-    --canvas-dot-color: #4dc0c5;
-    --canvas-line-color: #4dc0c5;
+    /* Palet Warna Gelap yang Ditingkatkan (Inspirasi: Dark Teal / Deep Ocean) */
+    --bg-color: #0d1218; /* Hampir hitam, dengan sentuhan biru gelap */
+    --card-bg-dark: rgba(22, 27, 34, 0.7); /* Background kartu lebih gelap dan transparan */
+    --card-bg-light: rgba(22, 27, 34, 0.9); /* Untuk elemen yang lebih padat */
+    --border-color: rgba(66, 88, 102, 0.2); /* Border abu-biru gelap yang soft */
+    --primary-text-color: #e0e6eb; /* Teks utama yang cerah namun soft */
+    --secondary-text-color: #a0aec0; /* Teks sekunder abu-abu kebiruan */
+    --accent-color: #4dc0c5; /* Teal / Cyan yang menarik tapi tidak mencolok */
+    --accent-hover-color: #3182ce; /* Biru yang sedikit lebih dalam untuk hover */
+    --accent-glow: rgba(77, 192, 197, 0.3); /* Glow untuk aksen */
+    --canvas-dot-color: #4dc0c5; /* Warna titik pada canvas */
+    --canvas-line-color: #4dc0c5; /* Warna garis pada canvas */
+
+    /* Tipografi */
     --font-family: 'Inter', sans-serif;
 }
 
@@ -37,35 +40,35 @@ body {
     position: relative;
     overflow-x: hidden;
 }
-/* Mencegah scroll saat menu mobile terbuka */
-body.nav-open {
-    overflow: hidden;
-}
 
-
-/* ===== CANVAS BACKGROUND ===== */
+/* ===== CANVAS BACKGROUND (Baru) ===== */
 #network-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    display: block;
-    background-color: var(--bg-color);
+    z-index: 0; /* Pastikan di bawah konten utama */
+    display: block; /* Penting untuk canvas */
+    background-color: var(--bg-color); /* Pastikan background canvas sesuai */
 }
 
-/* ===== Animated Background (Overlay) ===== */
+/* ===== Animated Background (Overlay opsional) ===== */
 .animated-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 1; /* Di atas canvas, di bawah konten */
     pointer-events: none;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.2) 100%);
-    opacity: 0.8;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.2) 0%, /* Lapisan gelap transparan */
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    opacity: 0.8; /* Sesuaikan intensitas overlay */
 }
 
 /* ===== Container Styles ===== */
@@ -74,7 +77,7 @@ body.nav-open {
     margin: 0 auto;
     padding: 0 32px;
     position: relative; 
-    z-index: 2;
+    z-index: 2; /* Konten di atas semua background */
     flex-grow: 1;
 }
 
@@ -93,10 +96,11 @@ body.nav-open {
     color: #fff;
     text-decoration: none;
     transition: transform 0.3s ease;
-    z-index: 1001; /* Pastikan logo di atas overlay */
+}
+.logo:hover {
+    transform: scale(1.05);
 }
 
-/* Navigasi utama untuk desktop */
 .main-nav a {
     text-decoration: none;
     color: var(--primary-text-color);
@@ -128,54 +132,62 @@ section {
     padding: 96px 0;
 }
 
-/* Gaya Hero Section (Tanpa Box) */
-.hero-section-no-box {
+/* Hero section sekarang tanpa box */
+.hero-section-no-box { /* Nama class baru */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 48px 0;
+    padding: 48px 0; /* Hanya padding vertikal */
     margin-bottom: 64px;
-    min-height: 80vh; /* Memberi tinggi agar terlihat bagus di awal */
-    justify-content: center; /* Konten di tengah vertikal */
+    background: transparent; /* Pastikan tidak ada background */
+    border: none; /* Hapus border */
+    backdrop-filter: none; /* Hapus blur */
+    -webkit-backdrop-filter: none;
 }
 
+/* Hero image box tetap ada untuk styling foto */
 .hero-image-box {
     width: 180px;
     height: 180px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 32px;
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-glow);
+    border: 4px solid var(--accent-color); /* Border foto dengan warna aksen */
+    box-shadow: 0 0 20px var(--accent-glow); /* Efek glow pada foto */
 }
+
 .hero-image-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .hero-text-box {
     max-width: 700px;
 }
+
 .heading-primary {
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 900;
     color: #fff;
     margin-bottom: 24px;
 }
+
 .hero-description {
     margin-bottom: 32px;
     color: var(--secondary-text-color);
 }
+
 .hero-buttons {
     display: flex;
     gap: 16px;
     justify-content: center;
 }
 
-/* Gaya untuk Section dengan Box */
+/* Untuk sections lain yang pakai box, tetap gunakan style ini */
 .projects-section, .tools-section {
-    background: var(--card-bg-dark);
+    background: var(--card-bg-dark); /* Menggunakan card-bg-dark */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
@@ -184,175 +196,326 @@ section {
     margin-bottom: 64px;
 }
 
-/* (Gaya Portfolio Section, Tools, Footer, dan Utilities lainnya tetap sama persis seperti sebelumnya) */
-/* ... [Salin semua gaya dari .projects-section sampai akhir dari CSS sebelumnya] ... */
-.projects-section { padding: 0; margin-bottom: 64px; }
-.section-header-portfolio { padding: 0 0 48px 0; text-align: left; max-width: 1200px; margin: 0 auto; }
-.section-header-portfolio .heading-secondary { text-align: left; margin-bottom: 16px; padding-left: 32px; }
-.category-filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-left: 32px; }
-.filter-btn { background-color: var(--card-bg-light); border: 1px solid var(--border-color); color: var(--primary-text-color); padding: 8px 16px; border-radius: 99px; cursor: pointer; font-size: 14px; transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
-.filter-btn:hover { background-color: var(--accent-hover-color); border-color: var(--accent-hover-color); color: var(--bg-color); }
-.filter-btn.active { background-color: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); font-weight: 700; }
-.project-grid-portfolio { display: grid; grid-template-columns: 1fr; gap: 32px; padding: 48px 32px; background: var(--card-bg-dark); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 12px; max-width: 1200px; margin: 0 auto; }
-.portfolio-card { background: var(--card-bg-light); border-radius: 8px; overflow: hidden; padding: 24px; border: 1px solid var(--border-color); transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
-.portfolio-card:hover { transform: translateY(-5px); background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
-.portfolio-card.hidden { display: none; }
-.card-content { display: flex; flex-direction: column; gap: 16px; flex-grow: 1; }
-.card-img-left { width: 100px; height: 100px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border-color); }
-.text-block { flex-grow: 1; }
-.card-title { font-size: 18px; color: #fff; margin-bottom: 8px; }
-.card-description { font-size: 14px; color: var(--secondary-text-color); margin-bottom: 16px; flex-grow: 1; }
-.card-link { font-weight: 700; color: var(--accent-color); text-decoration: none; transition: color 0.3s; display: inline-block; }
-.card-link:hover { color: var(--accent-hover-color); }
-.card-link.disabled-link { color: var(--secondary-text-color); pointer-events: none; cursor: default; }
-.tools-grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
-.tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
-.tool-item:hover { background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); }
-.tool-item img { height: 48px; margin-bottom: 12px; }
-.tool-item span { font-size: 14px; color: var(--secondary-text-color); }
-.main-footer { padding: 64px 0; border-top: 1px solid var(--border-color); background-color: rgba(0,0,0,0.2); }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 64px; }
-.footer-col h4 { font-size: 18px; color: #fff; margin-bottom: 16px; }
-.social-links { display: flex; flex-direction: column; gap: 8px; }
-.footer-col a { color: var(--primary-text-color); text-decoration: none; transition: color 0.3s; }
-.footer-col a:hover { color: var(--accent-color); }
-.copyright { text-align: center; color: var(--secondary-text-color); }
-.btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s; text-align: center; }
-.btn-primary { background-color: var(--accent-color); color: var(--bg-color); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-.btn-primary:hover { background-color: var(--accent-hover-color); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
-.btn-secondary { background-color: transparent; color: var(--primary-text-color); box-shadow: inset 0 0 0 1px var(--border-color); }
-.btn-secondary:hover { background-color: var(--card-bg-light); transform: translateY(-2px); }
-.animate-on-scroll { opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-.portfolio-card, .tool-item { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; transition-delay: var(--delay, 0s); }
-.portfolio-card.is-visible, .tool-item.is-visible { opacity: 1; transform: translateY(0); }
+/* ===== 5. PROJECTS SECTION (Portfolio Baru) ===== */
+.projects-section {
+    padding: 0; /* Hapus padding default section */
+    margin-bottom: 64px;
+}
 
+.section-header-portfolio {
+    padding: 0 0 48px 0; /* Padding khusus untuk header portfolio */
+    text-align: left; /* Teks rata kiri */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-header-portfolio .heading-secondary {
+    text-align: left;
+    margin-bottom: 16px;
+    padding-left: 32px; /* Sesuaikan dengan padding container */
+}
 
-/* ===== 9. GAYA RESPONSIVE & MENU MOBILE (Baru) ===== */
+/* Filter Buttons */
+.category-filter-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Untuk responsif jika tombol terlalu banyak */
+    gap: 8px;
+    margin-top: 24px;
+    margin-left: 32px; /* Sesuaikan dengan padding container */
+}
 
-/* Tombol Hamburger */
-.mobile-nav-toggle {
-    display: none; /* Sembunyikan di desktop */
-    background: transparent;
-    border: none;
+.filter-btn {
+    background-color: var(--card-bg-light); /* Lebih padat untuk tombol */
+    border: 1px solid var(--border-color);
+    color: var(--primary-text-color);
+    padding: 8px 16px;
+    border-radius: 99px; /* Bentuk pil */
     cursor: pointer;
-    z-index: 1001; /* Di atas overlay */
-    padding: 10px;
-}
-.hamburger-icon {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--primary-text-color);
-    position: relative;
-    transition: background-color 0.3s;
-}
-.hamburger-icon::before,
-.hamburger-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-text-color);
-    left: 0;
-    transition: transform 0.3s ease-in-out;
-}
-.hamburger-icon::before {
-    transform: translateY(-8px);
-}
-.hamburger-icon::after {
-    transform: translateY(8px);
+    font-size: 14px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
-/* Animasi Tombol Hamburger menjadi 'X' */
-.nav-open .hamburger-icon {
-    background-color: transparent; /* Sembunyikan garis tengah */
-}
-.nav-open .hamburger-icon::before {
-    transform: rotate(45deg);
-}
-.nav-open .hamburger-icon::after {
-    transform: rotate(-45deg);
+.filter-btn:hover {
+    background-color: var(--accent-hover-color);
+    border-color: var(--accent-hover-color);
+    color: var(--bg-color);
 }
 
+.filter-btn.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: 700;
+}
 
-/* Media Query untuk layar kecil (Mobile & Tablet) */
-@media (max-width: 768px) {
-    /* Tampilkan tombol hamburger dan sembunyikan nav desktop */
-    .mobile-nav-toggle {
-        display: block;
-    }
+/* Portfolio Grid */
+.project-grid-portfolio {
+    display: grid;
+    grid-template-columns: 1fr; /* Default untuk mobile */
+    gap: 32px;
+    padding: 48px 32px; /* Padding di sekitar grid */
+    background: var(--card-bg-dark); /* Menggunakan card-bg-dark */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    .main-nav {
-        /* Menu Overlay */
-        position: fixed;
-        inset: 0; /* (top: 0; right: 0; bottom: 0; left: 0;) */
-        background-color: rgba(13, 18, 24, 0.95); /* Background overlay */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-
-        /* Flexbox untuk menengahkan link */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-
-        /* Animasi */
-        transform: translateX(100%);
-        transition: transform 0.35s ease-in-out;
-        z-index: 1000;
-    }
-
-    /* Tampilkan menu saat .nav-open aktif */
-    .nav-open .main-nav {
-        transform: translateX(0);
-    }
-
-    /* Gaya link di menu mobile */
-    .main-nav a {
-        margin-left: 0;
-        font-size: 24px; /* Perbesar font */
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s, transform 0.3s;
-    }
-
-    /* Animasi link saat menu terbuka */
-    .nav-open .main-nav a {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.2s; /* Muncul setelah overlay masuk */
-    }
-
-    /* Penyesuaian Layout */
-    .container {
-        padding: 0 16px; /* Kurangi padding di mobile */
-    }
-    .hero-section-no-box {
-        min-height: 90vh; /* Sesuaikan tinggi hero di mobile */
-    }
-    .heading-primary {
-        font-size: 2.2rem; /* Kecilkan sedikit font judul utama */
-    }
-    .project-grid-portfolio, .tools-section, .projects-section {
-        padding: 32px 16px; /* Kurangi padding section di mobile */
-    }
+@media (min-width: 768px) {
     .project-grid-portfolio {
-        grid-template-columns: 1fr; /* Pastikan 1 kolom di mobile */
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom di tablet */
     }
-    .card-content {
-        flex-direction: column !important; /* Paksa layout vertikal di kartu */
+}
+@media (min-width: 1024px) {
+    .project-grid-portfolio {
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom di desktop */
     }
-    .card-img-left {
-        align-self: center; /* Gambar di tengah */
+}
+
+/* Portfolio Card */
+.portfolio-card {
+    background: var(--card-bg-light); /* Menggunakan card-bg-light */
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 24px; /* Padding internal kartu */
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    display: flex; /* Untuk layout konten di dalam kartu */
+    flex-direction: column;
+    justify-content: space-between; /* Dorong link ke bawah */
+    gap: 16px;
+}
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.03); /* Sedikit lebih terang saat hover */
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.portfolio-card.hidden {
+    display: none;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column; /* Default: vertikal */
+    gap: 16px;
+    flex-grow: 1; /* Konten tumbuh mengisi ruang */
+}
+
+@media (min-width: 768px) {
+    .portfolio-card .card-content {
+        flex-direction: row; /* Gambar di samping teks untuk layar lebar */
+        align-items: flex-start;
     }
+    .portfolio-card:nth-child(odd) .card-img-left {
+        order: -1; /* Gambar kiri */
+    }
+    .portfolio-card:nth-child(even) .card-img-left {
+        order: 1; /* Gambar kanan */
+    }
+}
+
+.card-img-left {
+    width: 100px; /* Ukuran gambar kecil di kiri */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0; /* Gambar tidak mengecil */
+    border: 1px solid var(--border-color); /* Tambahkan border pada gambar kartu */
+}
+
+.card-img-right-mobile {
+    width: 80px; /* Ukuran gambar HP */
+    height: 160px; /* Proporsi HP */
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    align-self: center; /* Posisikan di tengah secara horizontal */
+    border: 1px solid var(--border-color); /* Tambahkan border pada gambar HP */
+}
+
+/* Atur ulang untuk layar lebih besar agar gambar mobile tetap di kanan */
+@media (min-width: 768px) {
+    .portfolio-card .card-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    .card-img-right-mobile {
+        order: 1; /* Pindah gambar ke kanan */
+        align-self: flex-start; /* Sesuaikan alignment */
+        width: 120px;
+        height: 240px;
+    }
+}
+
+
+.text-block {
+    flex-grow: 1; /* Teks mengisi ruang tersisa */
+}
+
+.card-title {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    margin-bottom: 16px;
+    flex-grow: 1; /* Deskripsi tumbuh mengisi ruang */
+}
+
+.card-link {
+    font-weight: 700;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block; /* Agar panah bisa sejajar */
+}
+.card-link:hover {
+    color: var(--accent-hover-color);
+}
+.card-link.disabled-link {
+    color: var(--secondary-text-color);
+    pointer-events: none; /* Tidak bisa diklik */
+    text-decoration: none;
+    cursor: default;
+}
+
+
+/* ===== 6. TOOLS SECTION ===== */
+.tools-section {
+    padding: 48px; /* Pastikan padding sesuai */
+    background: var(--card-bg-dark);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 64px;
+}
+
+.tools-grid-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tool-item {
+    background-color: var(--card-bg-light);
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.tool-item:hover {
+    background-color: rgba(255, 255, 255, 0.03); /* Sedikit lebih terang saat hover */
+    border-color: var(--accent-color);
+}
+.tool-item img {
+    height: 48px;
+    margin-bottom: 12px;
+}
+.tool-item span {
+    font-size: 14px;
+    color: var(--secondary-text-color);
+}
+
+/* ===== 7. FOOTER ===== */
+.main-footer {
+    padding: 64px 0;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0,0,0,0.2); /* Sedikit background gelap untuk footer */
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+}
+@media (min-width: 768px) {
     .footer-grid {
-        grid-template-columns: 1fr; /* Footer jadi 1 kolom */
-        text-align: center;
+        grid-template-columns: repeat(3, 1fr);
     }
-    .social-links {
-        justify-content: center;
-        flex-direction: row; /* Ikon sosial media jadi horizontal */
-    }
+}
+.footer-col h4 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.social-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-col a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-col a:hover {
+    color: var(--accent-color);
+}
+.copyright { text-align: center; color: var(--secondary-text-color); }
+
+
+/* ===== 8. UTILITIES (Buttons, Animations) ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.btn-primary:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    box-shadow: inset 0 0 0 1px var(--border-color);
+}
+.btn-secondary:hover {
+    background-color: var(--card-bg-light); /* Background soft saat hover */
+    transform: translateY(-2px);
+}
+
+/* Animasi On-Scroll (Base State) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* State saat elemen terlihat */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Untuk menunda animasi pada item di dalam grid */
+.portfolio-card, .tool-item { /* Diubah dari .project-card menjadi .portfolio-card */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: var(--delay, 0s);
+}
+.portfolio-card.is-visible, .tool-item.is-visible { /* Diubah */
+    opacity: 1;
+    transform: translateY(0);
 }
