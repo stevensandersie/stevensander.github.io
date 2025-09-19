@@ -59,7 +59,7 @@ return [
     // Teks untuk bagian header di seksi Skills
     'skills_section' => [
         'title' => 'Tools & Skills',
-        'description' => 'These are the tools and skills that I great at and often use for my projects.'
+        'description' => 'Here are my core skills and the primary tools I use in my projects.'
     ],
 
     // Daftar Skill Anda
