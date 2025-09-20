@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
         navToggle.classList.toggle('is-open');
     });
 
-    // --- [KODE BARU & LEBIH SEDERHANA] Menutup menu saat link di-klik ---
-    // Logika ini membiarkan browser menangani scroll secara otomatis.
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('is-visible');
@@ -18,47 +16,57 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // --- Fungsionalitas Filter Portofolio ---
+    // --- [PERBAIKAN] Fungsionalitas Filter Portofolio dengan Animasi Reflow ---
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
+    const portfolioGrid = document.querySelector('.project-grid-portfolio');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Mengatur style tombol aktif
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
+
             const selectedCategory = this.dataset.category;
 
+            // 1. PUDARKAN SEMUA KARTU YANG TERLIHAT
             portfolioCards.forEach(card => {
-                const cardCategory = card.dataset.category;
-                if (selectedCategory === 'all' || selectedCategory === cardCategory) {
-                    card.classList.remove('hidden');
-                    card.classList.remove('is-visible');
-                    setTimeout(() => card.classList.add('is-visible'), 10);
-                } else {
-                    card.classList.add('hidden');
-                    card.classList.remove('is-visible');
-                }
+                card.classList.remove('is-visible');
             });
+
+            // 2. TUNGGU ANIMASI PUDAR SELESAI, LALU ATUR ULANG TATA LETAK
+            setTimeout(() => {
+                portfolioCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const shouldBeVisible = (selectedCategory === 'all' || selectedCategory === cardCategory);
+                    
+                    // Sembunyikan kartu yang tidak cocok agar grid bisa merapat
+                    if (!shouldBeVisible) {
+                        card.style.display = 'none';
+                    } else {
+                        card.style.display = 'flex'; // Gunakan 'flex' sesuai style asli kartu
+                    }
+                });
+
+                // 3. MUNCULKAN KEMBALI KARTU YANG SUDAH TERFILTER
+                portfolioCards.forEach((card, index) => {
+                    if (card.style.display === 'flex') {
+                        // Diberi jeda kecil agar animasi muncul berjalan mulus
+                        setTimeout(() => {
+                           card.classList.add('is-visible');
+                        }, 50 * index); // Efek muncul berurutan (stagger)
+                    }
+                });
+            }, 400); // Durasi harus cocok dengan transisi CSS (0.4s atau 400ms)
         });
     });
 
-    if (document.querySelector('.filter-btn[data-category="all"]')) {
-        document.querySelector('.filter-btn[data-category="all"]').click();
-    }
-
-    // --- Animasi Saat Scroll ---
+    // --- Animasi Saat Scroll (Tidak Berubah) ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                const gridItems = entry.target.querySelectorAll('.portfolio-card, .tool-item');
-                if (gridItems.length > 0) {
-                    gridItems.forEach((item, index) => {
-                        item.style.transitionDelay = `${index * 100}ms`;
-                        item.classList.add('is-visible');
-                    });
-                }
                 observer.unobserve(entry.target);
             }
         });
@@ -67,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     animatedElements.forEach(element => observer.observe(element));
 
-    // --- BACKGROUND ANIMASI JARINGAN ---
+    // --- BACKGROUND ANIMASI JARINGAN (Tidak Berubah) ---
     const canvas = document.getElementById('network-background');
     if (canvas) {
         const ctx = canvas.getContext('2d');
