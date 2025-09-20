@@ -47,7 +47,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                     <img src="<?= htmlspecialchars($data['personal_info']['profile_picture_url']) ?>" alt="Foto Profil <?= htmlspecialchars($data['personal_info']['name']) ?>">
                 </div>
                 <div class="hero-text-box">
-                    <h1 class="heading-primary"><?= htmlspecialchars($data['personal_info']['name']) ?></h1>
+                    <h1 class="heading-primary"><?= htmlspecialchars($data['personal_info']['name']) ?> - TESTING</h1>
                     <p class="hero-description">
                         <?= nl2br(htmlspecialchars($data['personal_info']['description'])) ?>
                     </p>
