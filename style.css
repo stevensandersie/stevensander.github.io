@@ -57,7 +57,7 @@ body {
     justify-content: space-between; 
     align-items: center; 
     padding: 24px 0; 
-    margin-bottom: 32px; /* Mengurangi margin bawah di mobile */
+    margin-bottom: 32px;
 }
 .logo {
     font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.3s ease; z-index: 1001;
@@ -89,15 +89,26 @@ body {
 
 /* Menu Navigasi Samping (Mobile) */
 .main-nav {
-    position: fixed; top: 0; right: 0; bottom: 0; width: 70%; max-width: 300px;
-    background: rgba(13, 18, 24, 0.95); 
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    transform: translateX(100%); transition: transform 0.3s ease-out;
-    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 48px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background: rgba(13, 18, 24, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateX(100%); /* Sembunyikan menu di luar layar */
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
     z-index: 1000;
 }
 .main-nav.is-visible {
-    transform: translateX(0);
+    transform: translateX(0); /* Munculkan menu saat di-klik */
 }
 .main-nav a {
     font-size: 1.25rem; color: var(--primary-text-color); text-decoration: none; padding-bottom: 4px; position: relative;
@@ -105,7 +116,7 @@ body {
 
 /* ===== 3. KONTEN UTAMA (MOBILE STYLES) ===== */
 section { 
-    padding: 64px 0; /* Padding lebih kecil untuk mobile */
+    padding: 64px 0;
 }
 .hero-section-no-box { 
     display: flex; flex-direction: column; align-items: center; text-align: center; 
@@ -122,7 +133,7 @@ section {
     max-width: 700px; 
 }
 .heading-primary { 
-    font-size: clamp(2.2rem, 10vw, 2.8rem); /* Ukuran font responsif */
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
     font-weight: 900; color: #fff; margin-bottom: 24px; 
 }
 .hero-description { 
@@ -141,6 +152,8 @@ section {
 .section-header-portfolio .heading-secondary { 
     text-align: left; margin-bottom: 16px; padding-left: 0; 
 }
+
+/* Tombol Filter */
 .category-filter-buttons { 
     display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-left: 0; 
 }
@@ -149,24 +162,23 @@ section {
     border: 1px solid var(--border-color);
     color: var(--primary-text-color);
     padding: 8px 16px;
-    border-radius: 99px; /* Ini kunci untuk membuatnya melengkung (pill shape) */
+    border-radius: 99px; /* Membuat sudut melengkung */
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s;
 }
-
 .filter-btn:hover {
     background-color: var(--accent-hover-color);
     border-color: var(--accent-hover-color);
     color: var(--bg-color);
 }
-
 .filter-btn.active {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
     color: var(--bg-color);
     font-weight: 700;
 }
+
 .project-grid-portfolio { 
     display: grid; 
     grid-template-columns: 1fr; /* 1 kolom untuk mobile */
@@ -177,7 +189,6 @@ section {
     border: 1px solid var(--border-color); 
     border-radius: 12px; 
 }
-
 .portfolio-card { background: var(--card-bg-light); border-radius: 8px; overflow: hidden; padding: 24px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 .portfolio-card:hover { transform: translateY(-5px); background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
 .portfolio-card.hidden { display: none; }
@@ -196,7 +207,7 @@ section {
     border: 1px solid var(--border-color); margin-bottom: 64px; 
 }
 .tools-grid-box { 
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Grid otomatis responsif */
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 24px; max-width: 900px; margin: 0 auto; 
 }
 .tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); transition: all 0.3s; }
@@ -242,6 +253,7 @@ section {
         transform: none; 
         background: none; 
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         width: auto; 
         flex-direction: row; 
         justify-content: flex-end; 
