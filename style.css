@@ -73,7 +73,7 @@ body {
     transition: all 0.3s ease;
 }
 .logo:hover {
-    transform: translateY(-2px) scale(1.05); /* [KONSISTENSI] Efek pop-up untuk logo */
+    transform: translateY(-2px) scale(1.05);
     color: var(--accent-color);
 }
 .main-nav {
@@ -107,7 +107,7 @@ body {
 }
 .main-nav a:hover {
     color: var(--accent-color);
-    transform: scale(1.05); /* [KONSISTENSI] Efek pop-up untuk menu mobile */
+    transform: translateY(-2px) scale(1.05); /* [UPDATE KONSISTENSI] Efek pop-up untuk menu mobile */
 }
 .nav-toggle {
     display: block;
@@ -167,7 +167,7 @@ section { padding: 64px 0; }
 .card-link { font-weight: 700; color: var(--accent-color); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
 .card-link:hover {
     color: var(--accent-hover-color);
-    transform: translateX(3px); /* [KONSISTENSI] Efek geser kanan untuk link internal */
+    transform: scale(1.05); /* [UPDATE KONSISTENSI] Efek pop-up untuk link "View Details" */
 }
 .card-link.disabled-link { color: var(--secondary-text-color); pointer-events: none; cursor: default; }
 .tools-section { padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; backdrop-filter: blur(12px); border: 1px solid var(--border-color); margin-bottom: 64px; }
@@ -221,7 +221,6 @@ section { padding: 64px 0; }
     .main-nav a::after {
         content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s ease-out;
     }
-    /* [KONSISTENSI] Efek untuk link navigasi desktop */
     .main-nav a:hover {
         color: var(--accent-color);
         transform: translateY(-2px);
