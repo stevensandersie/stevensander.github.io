@@ -53,6 +53,30 @@ return [
             'link_text' => 'Link not available',
             'item_url' => '#'
         ],
+        [
+            'title' => 'Unity Senior High School',
+            'type' => 'education', // Kategori baru
+            'description' => 'Graduated with the 7th highest diploma score',
+            'image_url' => '', // Placeholder image
+            'link_text' => 'Link not available',
+            'item_url' => '#'
+        ],
+        [
+            'title' => 'Unity Senior High School',
+            'type' => 'education', // Kategori baru
+            'description' => 'Graduated with the 7th highest diploma score',
+            'image_url' => '', // Placeholder image
+            'link_text' => 'Link not available',
+            'item_url' => '#'
+        ],
+        [
+            'title' => 'Unity Senior High School',
+            'type' => 'education', // Kategori baru
+            'description' => 'Graduated with the 7th highest diploma score',
+            'image_url' => '', // Placeholder image
+            'link_text' => 'Link not available',
+            'item_url' => '#'
+        ],
         // Tambahkan item lain di sini sesuai kebutuhan
     ],
     
