@@ -118,6 +118,13 @@ body {
 section { 
     padding: 64px 0;
 }
+
+/* [BARU] Sembunyikan section project & tools di mobile secara default */
+#projects,
+#tools {
+    display: none;
+}
+
 .hero-section-no-box { 
     display: flex; flex-direction: column; align-items: center; text-align: center; 
     padding: 32px 0; margin-bottom: 32px; 
@@ -277,6 +284,12 @@ section {
     .main-nav a:hover { color: var(--accent-color); }
     .main-nav a:hover::after { width: 100%; }
     
+    /* [BARU] Tampilkan kembali section di layar lebih besar */
+    #projects,
+    #tools {
+        display: block;
+    }
+
     section {
         padding: 96px 0;
     }

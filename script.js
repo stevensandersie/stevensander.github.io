@@ -9,8 +9,31 @@ document.addEventListener("DOMContentLoaded", function() {
         navToggle.classList.toggle('is-open');
     });
 
+    // --- [MODIFIKASI] Logika Klik Link Navigasi ---
     document.querySelectorAll('.main-nav a').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (event) => {
+            
+            // Hanya jalankan logika ini di layar mobile
+            if (window.innerWidth < 768) {
+                const targetId = link.getAttribute('href'); // Contoh: "#projects"
+                const targetSection = document.querySelector(targetId);
+                
+                // Jika link merujuk ke section projects atau tools
+                if (targetSection && (targetId === '#projects' || targetId === '#tools')) {
+                    event.preventDefault(); // Mencegah lompatan langsung
+                    
+                    // Tampilkan section yang tadinya tersembunyi
+                    targetSection.style.display = 'block';
+                    
+                    // Scroll ke section tersebut secara halus
+                    // Diberi sedikit timeout agar 'display: block' selesai dieksekusi
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+            
+            // Selalu tutup menu setelah link di-klik (di semua ukuran layar)
             nav.classList.remove('is-visible');
             navToggle.classList.remove('is-open');
         });
@@ -66,11 +89,12 @@ document.addEventListener("DOMContentLoaded", function() {
     animatedElements.forEach(element => observer.observe(element));
 
     // --- BACKGROUND ANIMASI JARINGAN ---
+    // (Kode ini tidak berubah, tetap sama seperti sebelumnya)
     const canvas = document.getElementById('network-background');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const numParticles = window.innerWidth < 768 ? 50 : 100; // Kurangi partikel di mobile
+        const numParticles = window.innerWidth < 768 ? 50 : 100;
         const maxDistance = 120;
         const particleSpeed = 0.3;
         let mouse = { x: null, y: null, radius: 150 };
