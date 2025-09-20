@@ -1,6 +1,6 @@
 <?php
 // Memuat semua data portfolio dari file data.php
-$data = include 'data.php';
+$data = require __DIR__ . '/../data.php';
 
 // Mendapatkan semua tipe unik dari portfolio items untuk membuat tombol filter secara dinamis
 $types = array_unique(array_column($data['portfolio_items'], 'type'));
