@@ -9,31 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
         navToggle.classList.toggle('is-open');
     });
 
-    // --- [MODIFIKASI] Logika Klik Link Navigasi ---
+    // --- Logika sederhana untuk menutup menu saat link di-klik ---
     document.querySelectorAll('.main-nav a').forEach(link => {
-        link.addEventListener('click', (event) => {
-            
-            // Hanya jalankan logika ini di layar mobile
-            if (window.innerWidth < 768) {
-                const targetId = link.getAttribute('href'); // Contoh: "#projects"
-                const targetSection = document.querySelector(targetId);
-                
-                // Jika link merujuk ke section projects atau tools
-                if (targetSection && (targetId === '#projects' || targetId === '#tools')) {
-                    event.preventDefault(); // Mencegah lompatan langsung
-                    
-                    // Tampilkan section yang tadinya tersembunyi
-                    targetSection.style.display = 'block';
-                    
-                    // Scroll ke section tersebut secara halus
-                    // Diberi sedikit timeout agar 'display: block' selesai dieksekusi
-                    setTimeout(() => {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
-            }
-            
-            // Selalu tutup menu setelah link di-klik (di semua ukuran layar)
+        link.addEventListener('click', () => {
             nav.classList.remove('is-visible');
             navToggle.classList.remove('is-open');
         });
@@ -89,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
     animatedElements.forEach(element => observer.observe(element));
 
     // --- BACKGROUND ANIMASI JARINGAN ---
-    // (Kode ini tidak berubah, tetap sama seperti sebelumnya)
     const canvas = document.getElementById('network-background');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -126,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.directionX = Math.random() < 0.5 ? 1 : -1;
                 this.directionY = Math.random() < 0.5 ? 1 : -1;
             }
-
             draw() {
                 ctx.fillStyle = 'rgba(77, 192, 197, 0.8)';
                 ctx.beginPath();
@@ -134,18 +110,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 ctx.closePath();
                 ctx.fill();
             }
-
             update() {
                 this.x += (Math.random() - 0.5) * particleSpeed * this.directionX;
                 this.y += (Math.random() - 0.5) * particleSpeed * this.directionY;
-
                 if (this.x > canvas.width || this.x < 0) this.directionX *= -1;
                 if (this.y > canvas.height || this.y < 0) this.directionY *= -1;
-
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-
                 if (distance < mouse.radius) {
                     let forceDirectionX = dx / distance;
                     let forceDirectionY = dy / distance;
@@ -166,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
-
         function initParticles() {
             particles = [];
             for (let i = 0; i < numParticles; i++) {
@@ -175,15 +146,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 particles.push(new Particle(x, y));
             }
         }
-
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
-
                 for (let j = i; j < particles.length; j++) {
                     let dx = particles[i].x - particles[j].x;
                     let dy = particles[i].y - particles[j].y;
