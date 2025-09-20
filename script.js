@@ -16,64 +16,69 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // --- [PERBAIKAN] Fungsionalitas Filter Portofolio dengan Animasi Reflow ---
+    // --- Fungsionalitas Filter Portofolio dengan Animasi Reflow ---
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
-    const portfolioGrid = document.querySelector('.project-grid-portfolio');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Mengatur style tombol aktif
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
             const selectedCategory = this.dataset.category;
 
-            // 1. PUDARKAN SEMUA KARTU YANG TERLIHAT
             portfolioCards.forEach(card => {
                 card.classList.remove('is-visible');
             });
 
-            // 2. TUNGGU ANIMASI PUDAR SELESAI, LALU ATUR ULANG TATA LETAK
             setTimeout(() => {
                 portfolioCards.forEach(card => {
                     const cardCategory = card.dataset.category;
                     const shouldBeVisible = (selectedCategory === 'all' || selectedCategory === cardCategory);
                     
-                    // Sembunyikan kartu yang tidak cocok agar grid bisa merapat
                     if (!shouldBeVisible) {
                         card.style.display = 'none';
                     } else {
-                        card.style.display = 'flex'; // Gunakan 'flex' sesuai style asli kartu
+                        card.style.display = 'flex';
                     }
                 });
 
-                // 3. MUNCULKAN KEMBALI KARTU YANG SUDAH TERFILTER
                 portfolioCards.forEach((card, index) => {
                     if (card.style.display === 'flex') {
-                        // Diberi jeda kecil agar animasi muncul berjalan mulus
                         setTimeout(() => {
                            card.classList.add('is-visible');
-                        }, 50 * index); // Efek muncul berurutan (stagger)
+                        }, 50 * index);
                     }
                 });
-            }, 400); // Durasi harus cocok dengan transisi CSS (0.4s atau 400ms)
+            }, 400);
         });
     });
 
-    // --- Animasi Saat Scroll (Tidak Berubah) ---
+    // --- [PERBAIKAN] Animasi Saat Halaman Pertama Kali Dimuat ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                
+                // Secara spesifik memicu animasi untuk kartu portfolio dan skill di dalamnya
+                const innerAnimatedItems = entry.target.querySelectorAll('.portfolio-card, .tool-item');
+                innerAnimatedItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('is-visible');
+                    }, 100 * index);
+                });
+
                 observer.unobserve(entry.target);
             }
         });
     }, {
         threshold: 0.1 
     });
-    animatedElements.forEach(element => observer.observe(element));
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
 
     // --- BACKGROUND ANIMASI JARINGAN (Tidak Berubah) ---
     const canvas = document.getElementById('network-background');
