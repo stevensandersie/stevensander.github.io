@@ -430,38 +430,51 @@ section {
     color: var(--secondary-text-color);
 }
 
-/* ===== 7. FOOTER ===== */
+/* ===== 7. FOOTER (Baru) ===== */
 .main-footer {
-    padding: 64px 0;
+    padding: 48px 0; /* Kurangi padding vertikal */
     border-top: 1px solid var(--border-color);
     background-color: rgba(0,0,0,0.2); /* Sedikit background gelap untuk footer */
+    text-align: center; /* Pusatkan semua konten di dalam footer */
 }
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    margin-bottom: 64px;
+
+/* Container baru untuk ikon sosial media */
+.footer-socials {
+    display: flex; /* Aktifkan Flexbox */
+    justify-content: center; /* Pusatkan ikon secara horizontal */
+    align-items: center; /* Pusatkan ikon secara vertikal */
+    gap: 24px; /* Jarak antar ikon */
+    margin-bottom: 24px; /* Jarak ke teks copyright */
+    flex-wrap: wrap; /* Izinkan ikon turun baris di layar sangat kecil */
 }
-@media (min-width: 768px) {
-    .footer-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+
+/* Gaya untuk setiap link ikon */
+.footer-socials a {
+    display: inline-block; /* Agar transisi transform bekerja */
+    transition: transform 0.3s ease;
 }
-.footer-col h4 {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 16px;
+
+/* Gaya untuk ikon SVG di dalam link */
+.footer-socials a svg {
+    width: 24px; /* Ukuran ikon */
+    height: 24px;
+    fill: var(--secondary-text-color); /* Warna default ikon, abu-abu soft */
+    transition: fill 0.3s ease;
 }
-.social-links { display: flex; flex-direction: column; gap: 8px; }
-.footer-col a {
-    color: var(--primary-text-color);
-    text-decoration: none;
-    transition: color 0.3s;
+
+/* Efek saat kursor di atas link ikon */
+.footer-socials a:hover {
+    transform: translateY(-3px); /* Ikon sedikit terangkat */
 }
-.footer-col a:hover {
-    color: var(--accent-color);
+.footer-socials a:hover svg {
+    fill: var(--accent-color); /* Warna ikon berubah menjadi warna tema */
 }
-.copyright { text-align: center; color: var(--secondary-text-color); }
+
+/* Gaya untuk teks copyright */
+.copyright {
+    color: var(--secondary-text-color);
+    font-size: 14px;
+}
 
 
 /* ===== 8. UTILITIES (Buttons, Animations) ===== */
