@@ -166,19 +166,19 @@ section { padding: 64px 0; }
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 24px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, box-shadow 0.3s ease; /* Tambahkan box-shadow ke transisi */
     display: flex;
     flex-direction: column;
     min-height: 280px;
-    position: relative; /* Penting untuk efek 3D */
-    z-index: 2; /* Agar berada di atas saat di hover */
+    position: relative;
+    z-index: 1; /* Z-index awal lebih rendah */
 }
 .portfolio-card:hover {
-    transform: translateY(-10px) scale(1.05); /* Lebih maju dan sedikit lebih besar */
+    transform: translateY(-10px) scale(1.05);
     border-color: var(--accent-color);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5), /* Bayangan lebih gelap untuk kedalaman */
-                0 0 30px var(--accent-glow); /* Glow di sekitar kartu */
-    z-index: 3; /* Pastikan kartu yang di-hover ada di paling depan */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5),
+                0 0 30px var(--accent-glow);
+    z-index: 5; /* Z-index lebih tinggi saat hover */
 }
 
 .card-header {
@@ -277,17 +277,17 @@ section { padding: 64px 0; }
     align-items: center;
     justify-content: center;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    position: relative; /* Penting untuk efek 3D */
-    z-index: 2; /* Agar berada di atas saat di hover */
+    transition: all 0.3s ease, box-shadow 0.3s ease; /* Tambahkan box-shadow ke transisi */
+    position: relative;
+    z-index: 1; /* Z-index awal lebih rendah */
 }
 .tool-item:hover {
     background-color: rgba(255, 255, 255, 0.03);
     border-color: var(--accent-color);
-    transform: translateY(-10px) scale(1.1); /* Lebih maju dan lebih besar */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5), /* Bayangan lebih gelap untuk kedalaman */
-                0 0 30px var(--accent-glow); /* Glow di sekitar kartu */
-    z-index: 3; /* Pastikan kartu yang di-hover ada di paling depan */
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5),
+                0 0 30px var(--accent-glow);
+    z-index: 5; /* Z-index lebih tinggi saat hover */
 }
 .tool-item img { height: 48px; margin-bottom: 12px; }
 .tool-item span { font-size: 14px; color: var(--secondary-text-color); }
