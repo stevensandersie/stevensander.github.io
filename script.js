@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
         navToggle.classList.toggle('is-open');
     });
 
-    // --- Logika sederhana untuk menutup menu saat link di-klik ---
+    // --- [KODE BARU & LEBIH SEDERHANA] Menutup menu saat link di-klik ---
+    // Logika ini membiarkan browser menangani scroll secara otomatis.
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('is-visible');
@@ -94,79 +95,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         class Particle {
             constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 2 + 0.5;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.density = (Math.random() * 30) + 1;
-                this.directionX = Math.random() < 0.5 ? 1 : -1;
-                this.directionY = Math.random() < 0.5 ? 1 : -1;
+                this.x = x; this.y = y; this.size = Math.random() * 2 + 0.5; this.baseX = this.x; this.baseY = this.y; this.density = (Math.random() * 30) + 1; this.directionX = Math.random() < 0.5 ? 1 : -1; this.directionY = Math.random() < 0.5 ? 1 : -1;
             }
             draw() {
-                ctx.fillStyle = 'rgba(77, 192, 197, 0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
+                ctx.fillStyle = 'rgba(77, 192, 197, 0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.closePath(); ctx.fill();
             }
             update() {
-                this.x += (Math.random() - 0.5) * particleSpeed * this.directionX;
-                this.y += (Math.random() - 0.5) * particleSpeed * this.directionY;
-                if (this.x > canvas.width || this.x < 0) this.directionX *= -1;
-                if (this.y > canvas.height || this.y < 0) this.directionY *= -1;
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let force = (mouse.radius - distance) / mouse.radius;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-                    this.x -= directionX * 0.5;
-                    this.y -= directionY * 0.5;
-                } else {
-                    if (this.x !== this.baseX) {
-                        let dx = this.x - this.baseX;
-                        this.x -= dx / 10;
-                    }
-                    if (this.y !== this.baseY) {
-                        let dy = this.y - this.baseY;
-                        this.y -= dy / 10;
-                    }
-                }
+                this.x += (Math.random() - 0.5) * particleSpeed * this.directionX; this.y += (Math.random() - 0.5) * particleSpeed * this.directionY; if (this.x > canvas.width || this.x < 0) this.directionX *= -1; if (this.y > canvas.height || this.y < 0) this.directionY *= -1; let dx = mouse.x - this.x; let dy = mouse.y - this.y; let distance = Math.sqrt(dx * dx + dy * dy); if (distance < mouse.radius) { let forceDirectionX = dx / distance; let forceDirectionY = dy / distance; let force = (mouse.radius - distance) / mouse.radius; let directionX = forceDirectionX * force * this.density; let directionY = forceDirectionY * force * this.density; this.x -= directionX * 0.5; this.y -= directionY * 0.5; } else { if (this.x !== this.baseX) { let dx = this.x - this.baseX; this.x -= dx / 10; } if (this.y !== this.baseY) { let dy = this.y - this.baseY; this.y -= dy / 10; } }
             }
         }
         function initParticles() {
-            particles = [];
-            for (let i = 0; i < numParticles; i++) {
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                particles.push(new Particle(x, y));
-            }
+            particles = []; for (let i = 0; i < numParticles; i++) { let x = Math.random() * canvas.width; let y = Math.random() * canvas.height; particles.push(new Particle(x, y)); }
         }
         function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < maxDistance) {
-                        let opacity = 1 - (distance / maxDistance);
-                        ctx.strokeStyle = `rgba(77, 192, 197, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
+            requestAnimationFrame(animate); ctx.clearRect(0, 0, canvas.width, canvas.height); for (let i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); for (let j = i; j < particles.length; j++) { let dx = particles[i].x - particles[j].x; let dy = particles[i].y - particles[j].y; let distance = Math.sqrt(dx * dx + dy * dy); if (distance < maxDistance) { let opacity = 1 - (distance / maxDistance); ctx.strokeStyle = `rgba(77, 192, 197, ${opacity})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); } } }
         }
         resizeCanvas();
         animate();
