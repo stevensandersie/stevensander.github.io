@@ -72,7 +72,7 @@ body {
     z-index: 1001;
 }
 
-/* [PERBAIKAN] Sembunyikan navigasi desktop secara default */
+/* [PERUBAHAN DI SINI] */
 .main-nav {
     display: none; /* Mulai dengan menyembunyikan ini */
     position: fixed;
@@ -85,8 +85,10 @@ body {
     transition: transform 0.3s ease-out;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 48px;
+    /* align-items: center; <-- Ini mungkin yang membuat tidak sejajar, karena teks tidak selalu center dengan sempurna */
+    align-items: flex-start; /* Mengubah ini agar rata kiri */
+    gap: 20px; /* Mengurangi sedikit jarak antar item agar lebih pas */
+    padding-left: 50px; /* Menambahkan padding agar tidak terlalu mepet ke kiri */
     z-index: 1000;
 }
 /* Tampilkan menu saat hamburger diklik */
@@ -98,7 +100,11 @@ body {
     font-size: 1.25rem;
     color: var(--primary-text-color);
     text-decoration: none;
+    /* Menghilangkan padding atau margin tambahan yang mungkin mengganggu keselarasan */
+    padding: 0;
+    margin: 0;
 }
+
 
 /* Tombol Hamburger */
 .nav-toggle {
@@ -180,7 +186,6 @@ section { padding: 64px 0; }
     .container { padding: 0 32px; }
     .nav-toggle { display: none; } /* Sembunyikan hamburger di desktop */
 
-    /* [PERBAIKAN] Tampilkan navigasi sebagai menu horizontal di desktop */
     .main-nav {
         display: flex;
         position: static;
@@ -190,6 +195,9 @@ section { padding: 64px 0; }
         width: auto;
         flex-direction: row;
         gap: 24px;
+        /* Mengembalikan ke default untuk desktop */
+        align-items: center; 
+        padding-left: 0;
     }
     .main-nav a {
         font-size: 1rem;
