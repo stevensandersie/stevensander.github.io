@@ -24,10 +24,12 @@
 html { scroll-behavior: smooth; }
 body { background-color: var(--bg-color); color: var(--primary-text-color); font-family: 'Inter', sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow-x: hidden; }
 
-/* ... (Kode CSS lain yang tidak berubah tetap sama) ... */
+/* ===== CANVAS & CONTAINER ===== */
 #network-background, .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
 .animated-background { z-index: 1; pointer-events: none; background: linear-gradient(45deg, rgba(0,0,0,0.2), transparent 50%, rgba(0,0,0,0.2)); }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2; flex-grow: 1; }
+
+/* ===== 2. HEADER & NAVIGASI (MOBILE-FIRST) ===== */
 .main-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; margin-bottom: 32px; }
 .logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; z-index: 1001; transition: all 0.3s ease; }
 .logo:hover { transform: translateY(-2px) scale(1.05); color: var(--accent-color); }
@@ -42,6 +44,8 @@ body { background-color: var(--bg-color); color: var(--primary-text-color); font
 .nav-toggle.is-open .hamburger { transform: rotate(45deg); }
 .nav-toggle.is-open .hamburger::before { transform: rotate(90deg); top: 0; }
 .nav-toggle.is-open .hamburger::after { opacity: 0; }
+
+/* ===== KONTEN UTAMA ===== */
 section { padding: 64px 0; }
 .hero-section-no-box { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 32px 0; margin-bottom: 32px; }
 .hero-image-box { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-bottom: 32px; border: 4px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); }
@@ -51,14 +55,27 @@ section { padding: 64px 0; }
 .hero-description { margin-bottom: 32px; color: var(--secondary-text-color); }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 .projects-section { padding: 0; margin-bottom: 64px; }
-.section-header-portfolio { padding: 32px 0; text-align: left; }
+.section-header-portfolio {
+    padding: 32px 0;
+    text-align: center; /* [PERUBAHAN] Membuat judul portfolio center */
+}
 .heading-secondary { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
-.section-header-portfolio .heading-secondary { text-align: left; margin-bottom: 16px; padding-left: 0; }
+.section-header-portfolio .heading-secondary {
+    text-align: center; /* [PERUBAHAN] Memastikan judulnya center */
+    margin-bottom: 24px;
+}
+.category-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    justify-content: center; /* [PERUBAHAN] Membuat tombol filter center */
+}
 .filter-btn { background-color: var(--card-bg-light); border: 1px solid var(--border-color); color: var(--primary-text-color); padding: 8px 16px; border-radius: 99px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; }
 .filter-btn:hover { background-color: var(--accent-hover-color); border-color: var(--accent-hover-color); color: var(--bg-color); transform: translateY(-2px) scale(1.05); }
 .filter-btn.active { background-color: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); font-weight: 700; }
 .project-grid-portfolio { display: grid; grid-template-columns: 1fr; gap: 24px; }
-.portfolio-card { background: var(--card-bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; min-height: 280px; position: relative; z-index: 1; }
+.portfolio-card { background: var(--card-bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; min-height: 280px; position: relative; z-index: 1; text-align: left; }
 .portfolio-card:hover { transform: translateY(-12px) scale(1.06); border-color: var(--accent-color); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow); z-index: 5; }
 .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
 .pill { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 99px; color: #fff; text-transform: capitalize; }
@@ -78,56 +95,18 @@ section { padding: 64px 0; }
 .card-link svg { stroke: var(--secondary-text-color); transition: stroke 0.3s ease; }
 .card-link:not(.disabled-link):hover svg { stroke: var(--accent-color); }
 .card-link.disabled-link { color: #6e7681; pointer-events: none; }
-
-/* ===== [PERUBAHAN] STYLING BARU UNTUK BAGIAN SKILL ===== */
+.tools-section .section-header {
+    text-align: center; /* [PERUBAHAN] Membuat judul skills center */
+    margin-bottom: 40px;
+}
 .tools-section { padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; backdrop-filter: blur(12px); border: 1px solid var(--border-color); margin-bottom: 64px; }
 .tools-grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
-
-.tool-item {
-    background-color: var(--card-bg-light);
-    padding: 24px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* Menjaga jarak antar elemen */
-    min-height: 200px; /* Memberi tinggi minimum */
-    position: relative;
-    z-index: 1;
-}
-.tool-item:hover {
-    transform: translateY(-12px) scale(1.1);
-    border-color: var(--accent-color);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow);
-    z-index: 5;
-}
-.tool-item-icon {
-    height: 50px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.tool-item-icon img {
-    height: 100%;
-    max-height: 48px;
-    width: auto;
-}
-.tool-item-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--primary-text-color);
-    margin-bottom: 16px;
-}
-.skill-level {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 99px;
-    color: #fff;
-}
+.tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 200px; position: relative; z-index: 1; }
+.tool-item:hover { transform: translateY(-12px) scale(1.1); border-color: var(--accent-color); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow); z-index: 5; }
+.tool-item-icon { height: 50px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
+.tool-item-icon img { height: 100%; max-height: 48px; width: auto; }
+.tool-item-name { font-size: 16px; font-weight: 500; color: var(--primary-text-color); margin-bottom: 16px; }
+.skill-level { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 99px; color: #fff; }
 .pill-advanced { background-color: var(--pill-advanced); }
 .pill-expert { background-color: var(--pill-expert); }
 .pill-intermediate { background-color: var(--pill-intermediate); }
