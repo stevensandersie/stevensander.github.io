@@ -73,7 +73,7 @@ body {
     transition: all 0.3s ease;
 }
 .logo:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.05); /* [KONSISTENSI] Efek pop-up untuk logo */
     color: var(--accent-color);
 }
 .main-nav {
@@ -103,10 +103,11 @@ body {
     text-decoration: none;
     padding: 0;
     margin: 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .main-nav a:hover {
     color: var(--accent-color);
+    transform: scale(1.05); /* [KONSISTENSI] Efek pop-up untuk menu mobile */
 }
 .nav-toggle {
     display: block;
@@ -149,13 +150,13 @@ section { padding: 64px 0; }
 .filter-btn { background-color: var(--card-bg-light); border: 1px solid var(--border-color); color: var(--primary-text-color); padding: 8px 16px; border-radius: 99px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; }
 .filter-btn:hover {
     background-color: var(--accent-hover-color); border-color: var(--accent-hover-color); color: var(--bg-color);
-    transform: translateY(-2px) scale(1.05); /* [EFEK POP-UP] */
+    transform: translateY(-2px) scale(1.05);
 }
 .filter-btn.active { background-color: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); font-weight: 700; }
 .project-grid-portfolio { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 32px 16px; background: var(--card-bg-dark); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 12px; }
 .portfolio-card { background: var(--card-bg-light); border-radius: 8px; overflow: hidden; padding: 24px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 .portfolio-card:hover {
-    transform: translateY(-5px) scale(1.03); /* [EFEK POP-UP] */
+    transform: translateY(-5px) scale(1.03);
     background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); box-shadow: 0 8px 25px var(--accent-glow);
 }
 .card-content { display: flex; align-items: flex-start; gap: 16px; flex-grow: 1; }
@@ -164,14 +165,17 @@ section { padding: 64px 0; }
 .card-title { font-size: 18px; color: #fff; margin-bottom: 8px; }
 .card-description { font-size: 14px; color: var(--secondary-text-color); margin-bottom: 16px; flex-grow: 1; }
 .card-link { font-weight: 700; color: var(--accent-color); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
-.card-link:hover { color: var(--accent-hover-color); letter-spacing: 0.5px; }
+.card-link:hover {
+    color: var(--accent-hover-color);
+    transform: translateX(3px); /* [KONSISTENSI] Efek geser kanan untuk link internal */
+}
 .card-link.disabled-link { color: var(--secondary-text-color); pointer-events: none; cursor: default; }
 .tools-section { padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; backdrop-filter: blur(12px); border: 1px solid var(--border-color); margin-bottom: 64px; }
 .tools-grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
 .tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); transition: all 0.3s ease; }
 .tool-item:hover {
     background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color);
-    transform: translateY(-5px) scale(1.08); /* [EFEK POP-UP] */
+    transform: translateY(-5px) scale(1.08);
     box-shadow: 0 6px 20px var(--accent-glow);
 }
 .tool-item img { height: 48px; margin-bottom: 12px; }
@@ -181,7 +185,7 @@ section { padding: 64px 0; }
 .footer-socials a { display: inline-block; transition: all 0.3s ease; }
 .footer-socials a svg { width: 24px; height: 24px; fill: var(--secondary-text-color); transition: fill 0.3s ease; }
 .footer-socials a:hover {
-    transform: translateY(-3px) scale(1.1); /* [EFEK POP-UP] */
+    transform: translateY(-3px) scale(1.1);
     box-shadow: 0 4px 15px var(--accent-glow);
     border-radius: 50%;
 }
@@ -191,13 +195,13 @@ section { padding: 64px 0; }
 .btn-primary { background-color: var(--accent-color); color: var(--bg-color); }
 .btn-primary:hover {
     background-color: var(--accent-hover-color);
-    transform: translateY(-2px) scale(1.05); /* [EFEK POP-UP] */
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 20px var(--accent-glow);
 }
 .btn-secondary { background-color: transparent; color: var(--primary-text-color); box-shadow: inset 0 0 0 1px var(--border-color); }
 .btn-secondary:hover {
     background-color: var(--card-bg-light);
-    transform: translateY(-2px) scale(1.05); /* [EFEK POP-UP] */
+    transform: translateY(-2px) scale(1.05);
 }
 .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
@@ -217,8 +221,12 @@ section { padding: 64px 0; }
     .main-nav a::after {
         content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s ease-out;
     }
+    /* [KONSISTENSI] Efek untuk link navigasi desktop */
+    .main-nav a:hover {
+        color: var(--accent-color);
+        transform: translateY(-2px);
+    }
     .main-nav a:hover::after { width: 100%; }
-    .main-nav a:hover { color: var(--accent-color); }
     section { padding: 96px 0; }
     .hero-image-box { width: 180px; height: 180px; }
     .heading-primary { font-size: clamp(2.5rem, 6vw, 4rem); }
