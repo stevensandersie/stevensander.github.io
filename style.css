@@ -1,4 +1,4 @@
-/* ===== 1. PENGATURAN TEMA & DASAR ===== */
+/* ===== 1. PENGATURAN TEMA & DASAR (MOBILE-FIRST) ===== */
 :root {
     --bg-color: #0d1218;
     --card-bg-dark: rgba(22, 27, 34, 0.7);
@@ -42,12 +42,22 @@ body {
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.2) 100%); opacity: 0.8;
 }
 .container {
-    max-width: 1200px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2; flex-grow: 1;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 16px; /* Padding lebih kecil untuk mobile */
+    position: relative; 
+    z-index: 2; 
+    flex-grow: 1;
 }
 
-/* ===== 2. HEADER & NAVIGASI (Mobile First) ===== */
+/* ===== 2. HEADER & NAVIGASI (MOBILE STYLES) ===== */
 .main-header {
-    display: flex; justify-content: space-between; align-items: center; padding: 24px 0; margin-bottom: 64px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 24px 0; 
+    margin-bottom: 32px; /* Mengurangi margin bawah di mobile */
 }
 .logo {
     font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.3s ease; z-index: 1001;
@@ -56,9 +66,14 @@ body {
     transform: scale(1.05);
 }
 
-/* Tombol Hamburger (Default di Mobile) */
+/* Tombol Hamburger */
 .nav-toggle {
-    display: block; z-index: 1001; background: transparent; border: 0; cursor: pointer; padding: 0.5em;
+    display: block; 
+    z-index: 1001; 
+    background: transparent; 
+    border: 0; 
+    cursor: pointer; 
+    padding: 0.5em;
 }
 .hamburger {
     display: block; position: relative; width: 2em; height: 3px; background: var(--primary-text-color); border-radius: 3px; transition: transform 0.3s ease;
@@ -72,12 +87,14 @@ body {
 .nav-toggle.is-open .hamburger::before { top: 0; transform: rotate(90deg); }
 .nav-toggle.is-open .hamburger::after { opacity: 0; }
 
-/* Menu Navigasi (Default di Mobile: Tersembunyi) */
+/* Menu Navigasi Samping (Mobile) */
 .main-nav {
     position: fixed; top: 0; right: 0; bottom: 0; width: 70%; max-width: 300px;
-    background: rgba(13, 18, 24, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: rgba(13, 18, 24, 0.95); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     transform: translateX(100%); transition: transform 0.3s ease-out;
     display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 48px;
+    z-index: 1000;
 }
 .main-nav.is-visible {
     transform: translateX(0);
@@ -85,44 +102,86 @@ body {
 .main-nav a {
     font-size: 1.25rem; color: var(--primary-text-color); text-decoration: none; padding-bottom: 4px; position: relative;
 }
-.main-nav a::after {
-    content: none;
+
+/* ===== 3. KONTEN UTAMA (MOBILE STYLES) ===== */
+section { 
+    padding: 64px 0; /* Padding lebih kecil untuk mobile */
+}
+.hero-section-no-box { 
+    display: flex; flex-direction: column; align-items: center; text-align: center; 
+    padding: 32px 0; margin-bottom: 32px; 
+}
+.hero-image-box { 
+    width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-bottom: 32px; 
+    border: 4px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); 
+}
+.hero-image-box img { 
+    width: 100%; height: 100%; object-fit: cover; 
+}
+.hero-text-box { 
+    max-width: 700px; 
+}
+.heading-primary { 
+    font-size: clamp(2.2rem, 10vw, 2.8rem); /* Ukuran font responsif */
+    font-weight: 900; color: #fff; margin-bottom: 24px; 
+}
+.hero-description { 
+    margin-bottom: 32px; color: var(--secondary-text-color); 
+}
+.hero-buttons { 
+    display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; 
 }
 
-/* ===== 3. KONTEN UTAMA ===== */
-section { padding: 96px 0; }
-.hero-section-no-box { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 48px 0; margin-bottom: 64px; background: transparent; border: none; backdrop-filter: none; }
-.hero-image-box { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-bottom: 32px; border: 4px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); }
-.hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
-.hero-text-box { max-width: 700px; }
-.heading-primary { font-size: clamp(2rem, 10vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: 24px; }
-.hero-description { margin-bottom: 32px; color: var(--secondary-text-color); }
-.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
-.projects-section { padding: 0; margin-bottom: 64px; }
-.section-header-portfolio { padding: 48px 16px; text-align: left; max-width: 1200px; margin: 0 auto; }
-.section-header-portfolio .heading-secondary { text-align: left; margin-bottom: 16px; padding-left: 0; }
-.category-filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-left: 0; }
-.filter-btn { background-color: var(--card-bg-light); border: 1px solid var(--border-color); color: var(--primary-text-color); padding: 8px 16px; border-radius: 99px; cursor: pointer; font-size: 14px; transition: all 0.3s; }
-.filter-btn:hover { background-color: var(--accent-hover-color); border-color: var(--accent-hover-color); color: var(--bg-color); }
-.filter-btn.active { background-color: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); font-weight: 700; }
-.project-grid-portfolio { display: grid; grid-template-columns: 1fr; gap: 32px; padding: 48px 16px; background: var(--card-bg-dark); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 12px; max-width: 1200px; margin: 0 auto; }
+.projects-section { 
+    padding: 0; margin-bottom: 64px; 
+}
+.section-header-portfolio { 
+    padding: 32px 0; text-align: left;
+}
+.section-header-portfolio .heading-secondary { 
+    text-align: left; margin-bottom: 16px; padding-left: 0; 
+}
+.category-filter-buttons { 
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-left: 0; 
+}
+.project-grid-portfolio { 
+    display: grid; 
+    grid-template-columns: 1fr; /* 1 kolom untuk mobile */
+    gap: 24px; 
+    padding: 32px 16px; 
+    background: var(--card-bg-dark); 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+}
+
 .portfolio-card { background: var(--card-bg-light); border-radius: 8px; overflow: hidden; padding: 24px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 .portfolio-card:hover { transform: translateY(-5px); background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
 .portfolio-card.hidden { display: none; }
 .card-content { display: flex; align-items: flex-start; gap: 16px; flex-grow: 1; }
-.card-img-left { width: 100px; height: 100px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border-color); }
+.card-img-left { width: 80px; height: 80px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border-color); }
 .text-block { flex-grow: 1; }
 .card-title { font-size: 18px; color: #fff; margin-bottom: 8px; }
 .card-description { font-size: 14px; color: var(--secondary-text-color); margin-bottom: 16px; flex-grow: 1; }
 .card-link { font-weight: 700; color: var(--accent-color); text-decoration: none; transition: color 0.3s; display: inline-block; }
 .card-link:hover { color: var(--accent-hover-color); }
 .card-link.disabled-link { color: var(--secondary-text-color); pointer-events: none; cursor: default; }
-.tools-section { padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); margin-bottom: 64px; }
-.tools-grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+
+.tools-section { 
+    padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid var(--border-color); margin-bottom: 64px; 
+}
+.tools-grid-box { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Grid otomatis responsif */
+    gap: 24px; max-width: 900px; margin: 0 auto; 
+}
 .tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); transition: all 0.3s; }
 .tool-item:hover { background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); }
 .tool-item img { height: 48px; margin-bottom: 12px; }
 .tool-item span { font-size: 14px; color: var(--secondary-text-color); }
+
+/* ===== FOOTER & TOMBOL (MOBILE STYLES) ===== */
 .main-footer { padding: 48px 0; border-top: 1px solid var(--border-color); background-color: rgba(0,0,0,0.2); text-align: center; }
 .footer-socials { display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
 .footer-socials a { display: inline-block; transition: transform 0.3s ease; }
@@ -135,41 +194,82 @@ section { padding: 96px 0; }
 .btn-primary:hover { background-color: var(--accent-hover-color); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
 .btn-secondary { background-color: transparent; color: var(--primary-text-color); box-shadow: inset 0 0 0 1px var(--border-color); }
 .btn-secondary:hover { background-color: var(--card-bg-light); transform: translateY(-2px); }
+
+/* ===== ANIMASI ===== */
 .animate-on-scroll { opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
 .portfolio-card, .tool-item { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; transition-delay: var(--delay, 0s); }
 .portfolio-card.is-visible, .tool-item.is-visible { opacity: 1; transform: translateY(0); }
 
-/* ===== MEDIA QUERY UNTUK LAYAR LEBIH BESAR (Tablet & Desktop) ===== */
+/* ===== 4. MEDIA QUERIES (TABLET & DESKTOP) ===== */
+
+/* Tampilan untuk Tablet (768px) ke atas */
 @media (min-width: 768px) {
     .container {
-        padding: 0 32px;
+        padding: 0 32px; /* Kembalikan padding untuk layar besar */
+    }
+    .main-header {
+        margin-bottom: 64px;
     }
     .nav-toggle {
-        display: none;
+        display: none; /* Sembunyikan tombol hamburger */
     }
     .main-nav {
-        position: static; transform: none; background: none; backdrop-filter: none;
-        width: auto; flex-direction: row; justify-content: flex-end; gap: 24px;
+        position: static; 
+        transform: none; 
+        background: none; 
+        backdrop-filter: none;
+        width: auto; 
+        flex-direction: row; 
+        justify-content: flex-end; 
+        gap: 24px;
     }
     .main-nav a {
-        font-size: 1rem; margin-left: 24px;
+        font-size: 1rem; 
+        margin-left: 24px;
+        transition: color 0.3s;
     }
     .main-nav a::after {
-        content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
-        background-color: var(--accent-color); transition: width 0.3s ease-out;
+        content: ''; 
+        position: absolute; 
+        width: 0; 
+        height: 2px; 
+        bottom: 0; 
+        left: 0;
+        background-color: var(--accent-color); 
+        transition: width 0.3s ease-out;
     }
     .main-nav a:hover { color: var(--accent-color); }
     .main-nav a:hover::after { width: 100%; }
-    .hero-image-box { width: 180px; height: 180px; }
-    .heading-primary { font-size: clamp(2.5rem, 6vw, 4rem); }
-    .section-header-portfolio, .project-grid-portfolio { padding-left: 32px; padding-right: 32px; }
-    .project-grid-portfolio { grid-template-columns: repeat(2, 1fr); }
-    .tools-section { padding: 48px; }
+    
+    section {
+        padding: 96px 0;
+    }
+    .hero-image-box { 
+        width: 180px; height: 180px; 
+    }
+    .heading-primary { 
+        font-size: clamp(2.5rem, 6vw, 4rem); 
+    }
+    .section-header-portfolio {
+        padding: 48px 0;
+    }
+    .project-grid-portfolio { 
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
+        padding: 48px 32px;
+    }
+    .tools-section {
+        padding: 48px;
+    }
+    .card-img-left {
+        width: 100px;
+        height: 100px;
+    }
 }
 
+/* Tampilan untuk Desktop (1024px) ke atas */
 @media (min-width: 1024px) {
     .project-grid-portfolio {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk desktop */
     }
 }
