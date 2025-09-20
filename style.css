@@ -1,4 +1,4 @@
-/* ===== 1. PENGATURAN TEMA & DASAR ===== */
+/* ===== 1. PENGATURAN TEMA & DASAR (MOBILE-FIRST) ===== */
 :root {
     --bg-color: #0d1218;
     --card-bg-dark: rgba(22, 27, 34, 0.7);
@@ -45,13 +45,13 @@ body {
     width: 100%;
     max-width: 1200px; 
     margin: 0 auto; 
-    padding: 0 16px; 
+    padding: 0 16px; /* Padding lebih kecil untuk mobile */
     position: relative; 
     z-index: 2; 
     flex-grow: 1;
 }
 
-/* ===== 2. HEADER & NAVIGASI (BERLAKU DI SEMUA UKURAN) ===== */
+/* ===== 2. HEADER & NAVIGASI (MOBILE STYLES) ===== */
 .main-header {
     display: flex; 
     justify-content: space-between; 
@@ -87,7 +87,7 @@ body {
 .nav-toggle.is-open .hamburger::before { top: 0; transform: rotate(90deg); }
 .nav-toggle.is-open .hamburger::after { opacity: 0; }
 
-/* Menu Navigasi Samping */
+/* Menu Navigasi Samping (Mobile) */
 .main-nav {
     position: fixed;
     top: 0;
@@ -98,7 +98,7 @@ body {
     background: rgba(13, 18, 24, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transform: translateX(100%); 
+    transform: translateX(100%); /* Sembunyikan menu di luar layar */
     transition: transform 0.3s ease-out;
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@ body {
     z-index: 1000;
 }
 .main-nav.is-visible {
-    transform: translateX(0);
+    transform: translateX(0); /* Munculkan menu saat di-klik */
 }
 .main-nav a {
     font-size: 1.25rem; color: var(--primary-text-color); text-decoration: none; padding-bottom: 4px; position: relative;
@@ -142,6 +142,7 @@ section {
 .hero-buttons { 
     display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; 
 }
+
 .projects-section { 
     padding: 0; margin-bottom: 64px; 
 }
@@ -151,20 +152,42 @@ section {
 .section-header-portfolio .heading-secondary { 
     text-align: left; margin-bottom: 16px; padding-left: 0; 
 }
+
+/* Tombol Filter */
 .category-filter-buttons { 
     display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-left: 0; 
 }
 .filter-btn {
-    background-color: var(--card-bg-light); border: 1px solid var(--border-color); color: var(--primary-text-color); padding: 8px 16px; border-radius: 99px; cursor: pointer; font-size: 14px; transition: all 0.3s;
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text-color);
+    padding: 8px 16px;
+    border-radius: 99px; /* Membuat sudut melengkung */
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
 }
 .filter-btn:hover {
-    background-color: var(--accent-hover-color); border-color: var(--accent-hover-color); color: var(--bg-color);
+    background-color: var(--accent-hover-color);
+    border-color: var(--accent-hover-color);
+    color: var(--bg-color);
 }
 .filter-btn.active {
-    background-color: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); font-weight: 700;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: 700;
 }
+
 .project-grid-portfolio { 
-    display: grid; grid-template-columns: 1fr; gap: 24px; padding: 32px 16px; background: var(--card-bg-dark); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 12px; 
+    display: grid; 
+    grid-template-columns: 1fr; /* 1 kolom untuk mobile */
+    gap: 24px; 
+    padding: 32px 16px; 
+    background: var(--card-bg-dark); 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
 }
 .portfolio-card { background: var(--card-bg-light); border-radius: 8px; overflow: hidden; padding: 24px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 .portfolio-card:hover { transform: translateY(-5px); background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
@@ -177,16 +200,22 @@ section {
 .card-link { font-weight: 700; color: var(--accent-color); text-decoration: none; transition: color 0.3s; display: inline-block; }
 .card-link:hover { color: var(--accent-hover-color); }
 .card-link.disabled-link { color: var(--secondary-text-color); pointer-events: none; cursor: default; }
+
 .tools-section { 
-    padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); margin-bottom: 64px; 
+    padding: 48px 16px; background: var(--card-bg-dark); border-radius: 12px; 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid var(--border-color); margin-bottom: 64px; 
 }
 .tools-grid-box { 
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 24px; max-width: 900px; margin: 0 auto; 
 }
 .tool-item { background-color: var(--card-bg-light); padding: 24px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); transition: all 0.3s; }
 .tool-item:hover { background-color: rgba(255, 255, 255, 0.03); border-color: var(--accent-color); }
 .tool-item img { height: 48px; margin-bottom: 12px; }
 .tool-item span { font-size: 14px; color: var(--secondary-text-color); }
+
+/* ===== FOOTER & TOMBOL (MOBILE STYLES) ===== */
 .main-footer { padding: 48px 0; border-top: 1px solid var(--border-color); background-color: rgba(0,0,0,0.2); text-align: center; }
 .footer-socials { display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
 .footer-socials a { display: inline-block; transition: transform 0.3s ease; }
@@ -199,21 +228,55 @@ section {
 .btn-primary:hover { background-color: var(--accent-hover-color); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
 .btn-secondary { background-color: transparent; color: var(--primary-text-color); box-shadow: inset 0 0 0 1px var(--border-color); }
 .btn-secondary:hover { background-color: var(--card-bg-light); transform: translateY(-2px); }
+
+/* ===== ANIMASI ===== */
 .animate-on-scroll { opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
 .portfolio-card, .tool-item { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; transition-delay: var(--delay, 0s); }
 .portfolio-card.is-visible, .tool-item.is-visible { opacity: 1; transform: translateY(0); }
 
-/* ===== 4. MEDIA QUERIES (HANYA UNTUK LAYOUT KONTEN) ===== */
+/* ===== 4. MEDIA QUERIES (TABLET & DESKTOP) ===== */
 
 /* Tampilan untuk Tablet (768px) ke atas */
 @media (min-width: 768px) {
     .container {
-        padding: 0 32px;
+        padding: 0 32px; /* Kembalikan padding untuk layar besar */
     }
     .main-header {
         margin-bottom: 64px;
     }
+    .nav-toggle {
+        display: none; /* Sembunyikan tombol hamburger */
+    }
+    .main-nav {
+        position: static; 
+        transform: none; 
+        background: none; 
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        width: auto; 
+        flex-direction: row; 
+        justify-content: flex-end; 
+        gap: 24px;
+    }
+    .main-nav a {
+        font-size: 1rem; 
+        margin-left: 24px;
+        transition: color 0.3s;
+    }
+    .main-nav a::after {
+        content: ''; 
+        position: absolute; 
+        width: 0; 
+        height: 2px; 
+        bottom: 0; 
+        left: 0;
+        background-color: var(--accent-color); 
+        transition: width 0.3s ease-out;
+    }
+    .main-nav a:hover { color: var(--accent-color); }
+    .main-nav a:hover::after { width: 100%; }
+    
     section {
         padding: 96px 0;
     }
@@ -227,7 +290,7 @@ section {
         padding: 48px 0;
     }
     .project-grid-portfolio { 
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
         padding: 48px 32px;
     }
     .tools-section {
@@ -242,6 +305,6 @@ section {
 /* Tampilan untuk Desktop (1024px) ke atas */
 @media (min-width: 1024px) {
     .project-grid-portfolio {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk desktop */
     }
 }
