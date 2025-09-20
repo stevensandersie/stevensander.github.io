@@ -14,7 +14,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/style.css">
     
@@ -70,21 +70,39 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                 </div>
                 <div class="project-grid-portfolio">
                     <?php foreach ($data['portfolio_items'] as $item): ?>
-                    <article class="portfolio-card" data-category="<?= htmlspecialchars($item['type']) ?>">
-                        <div class="card-content">
-                            <?php if (!empty($item['image_url'])): ?>
-                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-left">
+                    <article class="portfolio-card" data-category="<?= strtolower(htmlspecialchars($item['type'])) ?>">
+                        
+                        <div class="card-header">
+                            <span class="pill pill-<?= strtolower(htmlspecialchars($item['type'])) ?>"><?= htmlspecialchars($item['type']) ?></span>
+                            <?php if (!empty($item['status'])): ?>
+                                <span class="status-pill"><?= htmlspecialchars($item['status']) ?></span>
                             <?php endif; ?>
-                            
-                            <div class="text-block">
-                                <h3 class="card-title"><?= htmlspecialchars($item['title']) ?></h3>
-                                <p class="card-description"><?= htmlspecialchars($item['description']) ?></p>
-                                <a href="<?= htmlspecialchars($item['item_url']) ?>" class="card-link <?= ($item['link_text'] === 'Link not available') ? 'disabled-link' : '' ?>" target="_blank">
-                                    <?= htmlspecialchars($item['link_text']) ?>
-                                    <?php if ($item['link_text'] !== 'Link not available'): ?>&rarr;<?php endif; ?>
-                                </a>
-                            </div>
                         </div>
+
+                        <div class="card-body">
+                            <h3 class="card-title"><?= htmlspecialchars($item['title']) ?></h3>
+                            <p class="card-description"><?= htmlspecialchars($item['description']) ?></p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="tags-container">
+                                <?php if (!empty($item['tags'])): ?>
+                                    <?php foreach ($item['tags'] as $tag): ?>
+                                        <span class="tag"><?= htmlspecialchars($tag) ?></span>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                            <?php
+                                $isActionLink = !in_array($item['link_text'], ['Link not available', 'In Progress']);
+                            ?>
+                            <a href="<?= htmlspecialchars($item['item_url']) ?>" class="card-link <?= !$isActionLink ? 'disabled-link' : '' ?>" <?= $isActionLink ? 'target="_blank"' : '' ?>>
+                                <?= htmlspecialchars($item['link_text']) ?>
+                                <?php if ($isActionLink): ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+
                     </article>
                     <?php endforeach; ?>
                 </div>
