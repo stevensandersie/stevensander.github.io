@@ -71,19 +71,16 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                 <div class="project-grid-portfolio">
                     <?php foreach ($data['portfolio_items'] as $item): ?>
                     <article class="portfolio-card" data-category="<?= strtolower(htmlspecialchars($item['type'])) ?>">
-                        
                         <div class="card-header">
                             <span class="pill pill-<?= strtolower(htmlspecialchars($item['type'])) ?>"><?= htmlspecialchars($item['type']) ?></span>
                             <?php if (!empty($item['status'])): ?>
                                 <span class="status-pill"><?= htmlspecialchars($item['status']) ?></span>
                             <?php endif; ?>
                         </div>
-
                         <div class="card-body">
                             <h3 class="card-title"><?= htmlspecialchars($item['title']) ?></h3>
                             <p class="card-description"><?= htmlspecialchars($item['description']) ?></p>
                         </div>
-
                         <div class="card-footer">
                             <div class="tags-container">
                                 <?php if (!empty($item['tags'])): ?>
@@ -92,9 +89,7 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
-                            <?php
-                                $isActionLink = !in_array($item['link_text'], ['Link not available', 'In Progress']);
-                            ?>
+                            <?php $isActionLink = !in_array($item['link_text'], ['Link not available', 'In Progress']); ?>
                             <a href="<?= htmlspecialchars($item['item_url']) ?>" class="card-link <?= !$isActionLink ? 'disabled-link' : '' ?>" <?= $isActionLink ? 'target="_blank"' : '' ?>>
                                 <?= htmlspecialchars($item['link_text']) ?>
                                 <?php if ($isActionLink): ?>
@@ -102,7 +97,6 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                                 <?php endif; ?>
                             </a>
                         </div>
-
                     </article>
                     <?php endforeach; ?>
                 </div>
@@ -116,10 +110,17 @@ $categories = ['All', 'Project', 'Education', 'Certificate', 'Activity'];
                 <div class="tools-grid-box">
                     <?php foreach ($data['skills'] as $skill): ?>
                     <div class="tool-item">
-                        <?php if (!empty($skill['image_url'])): ?>
-                            <img src="<?= htmlspecialchars($skill['image_url']) ?>" alt="<?= htmlspecialchars($skill['name']) ?>">
+                        <div class="tool-item-icon">
+                            <?php if (!empty($skill['image_url'])): ?>
+                                <img src="<?= htmlspecialchars($skill['image_url']) ?>" alt="<?= htmlspecialchars($skill['name']) ?>">
+                            <?php endif; ?>
+                        </div>
+                        <span class="tool-item-name"><?= htmlspecialchars($skill['name']) ?></span>
+                        <?php if (!empty($skill['level'])): ?>
+                            <span class="skill-level pill-<?= strtolower(htmlspecialchars($skill['level'])) ?>">
+                                <?= htmlspecialchars($skill['level']) ?>
+                            </span>
                         <?php endif; ?>
-                        <span><?= htmlspecialchars($skill['name']) ?></span>
                     </div>
                     <?php endforeach; ?>
                 </div>

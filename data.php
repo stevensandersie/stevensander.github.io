@@ -20,61 +20,38 @@ return [
         'description' => 'Explore my projects, education, certifications, and activities.',
     ],
 
-    // Daftar Item Portfolio (Proyek, Pendidikan, Sertifikat, Aktivitas)
+    // Daftar Item Portfolio
     'portfolio_items' => [
+        // ... (data portfolio items Anda tetap sama seperti sebelumnya)
         [
-            'title' => 'Management KingsHCut',
-            'type' => 'Project',
-            'status' => '', // Kosongkan jika tidak ada status
+            'title' => 'Management KingsHCut', 'type' => 'Project', 'status' => '',
             'description' => 'Aplikasi web berbasis Java dan MySQL untuk mengelola stok, penjualan, dan laporan keuangan barbershop.',
-            'tags' => ['Java', 'MySQL', 'Web Development'],
-            'link_text' => 'Link not available',
-            'item_url' => '#'
+            'tags' => ['Java', 'MySQL', 'Web Development'], 'link_text' => 'Link not available', 'item_url' => '#'
         ],
         [
-            'title' => 'Aplikasi Sewa Alat Berat',
-            'type' => 'Project',
-            'status' => '',
+            'title' => 'Aplikasi Sewa Alat Berat', 'type' => 'Project', 'status' => '',
             'description' => 'Membuat aplikasi sederhana untuk manajemen penyewaan alat berat yang efisien dan terintegrasi.',
-            'tags' => ['Application Development', 'Database Management'],
-            'link_text' => 'View Details',
-            'item_url' => '#'
+            'tags' => ['Application Development', 'Database Management'], 'link_text' => 'View Details', 'item_url' => '#'
         ],
         [
-            'title' => 'Unity Senior High School',
-            'type' => 'Education',
-            'status' => 'Academic Achievement',
+            'title' => 'Unity Senior High School', 'type' => 'Education', 'status' => 'Academic Achievement',
             'description' => 'Graduated with the 7th highest diploma score.',
-            'tags' => [], // Kosongkan jika tidak ada tags
-            'link_text' => 'Link not available',
-            'item_url' => '#'
+            'tags' => [], 'link_text' => 'Link not available', 'item_url' => '#'
         ],
         [
-            'title' => 'Business Information Technology',
-            'type' => 'Education',
-            'status' => 'Ongoing',
+            'title' => 'Business Information Technology', 'type' => 'Education', 'status' => 'Ongoing',
             'description' => 'Currently studying at BINUS University with focus on system analysis and data analysis.',
-            'tags' => ['System Analysis', 'Data Analysis', 'AI', 'Machine Learning'],
-            'link_text' => 'In Progress',
-            'item_url' => '#'
+            'tags' => ['System Analysis', 'Data Analysis', 'AI', 'Machine Learning'], 'link_text' => 'In Progress', 'item_url' => '#'
         ],
         [
-            'title' => 'System Architecture Certification',
-            'type' => 'Certificate',
-            'status' => '',
+            'title' => 'System Architecture Certification', 'type' => 'Certificate', 'status' => '',
             'description' => 'Certified in system architecture design and implementation best practices.',
-            'tags' => ['System Architecture', 'Design Patterns'],
-            'link_text' => 'View Certificate',
-            'item_url' => '#'
+            'tags' => ['System Architecture', 'Design Patterns'], 'link_text' => 'View Certificate', 'item_url' => '#'
         ],
         [
-            'title' => 'Academic Research Project',
-            'type' => 'Activity',
-            'status' => 'Ongoing',
+            'title' => 'Academic Research Project', 'type' => 'Activity', 'status' => 'Ongoing',
             'description' => 'Leading research on Information Systems optimization and AI integration in business processes.',
-            'tags' => ['Research', 'AI Integration', 'Business Process'],
-            'link_text' => 'View Research',
-            'item_url' => '#'
+            'tags' => ['Research', 'AI Integration', 'Business Process'], 'link_text' => 'View Research', 'item_url' => '#'
         ],
     ],
     
@@ -84,14 +61,14 @@ return [
         'description' => 'Here are my core skills and the primary tools I use in my projects.'
     ],
 
-    // Daftar Skill Anda
+    // Daftar Skill Anda dengan tambahan 'level'
     'skills' => [
-        ['name' => 'Figma', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'],
-        ['name' => 'Canva', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg'],
-        ['name' => 'Visual Paradigm', 'image_url' => ''],
-        ['name' => 'Ms. Word', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png'],
-        ['name' => 'MySQL', 'image_url' => 'https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg'],
-        ['name' => 'Eclipse', 'image_url' => 'https://www.vectorlogo.zone/logos/eclipse/eclipse-ar21.svg']
+        ['name' => 'Figma', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg', 'level' => 'Advanced'],
+        ['name' => 'Canva', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg', 'level' => 'Expert'],
+        ['name' => 'UI/UX Design', 'image_url' => 'https://cdn-icons-png.flaticon.com/512/3159/3159318.png', 'level' => 'Intermediate'],
+        ['name' => 'Ms. Word', 'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png', 'level' => 'Expert'],
+        ['name' => 'MySQL', 'image_url' => 'https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg', 'level' => 'Intermediate'],
+        ['name' => 'Java', 'image_url' => 'https://www.vectorlogo.zone/logos/java/java-ar21.svg', 'level' => 'Beginner']
     ],
 
     // Informasi Kontak di Footer
